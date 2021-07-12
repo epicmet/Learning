@@ -1,7 +1,7 @@
 #! /bin/bash
 
-DESTINATION=./temp
-FILE_PREFIX=file
+DESTINATION=$1
+read -p "please enter a fileprefix: " FILE_PREFIX
 
 mkdir -p $DESTINATION
 cd $DESTINATION
