@@ -9,15 +9,67 @@ import {
 } from "react-icons/fa";
 const url = "https://randomuser.me/api/";
 const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [person, setPerson] = useState(null);
   const [title, setTitle] = useState("name");
   const [value, setValue] = useState("random person");
 
+  const getPerson = async () => {
+    setLoading(true);
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const person = data.results[0];
+    const {
+      phone,
+      email,
+      picture: { large: image },
+      login: { password },
+      name: { first, last },
+      dob: { age },
+      location: {
+        street: { number, name },
+      },
+    } = person;
+
+    // const { large: image } = person.picture;
+    // const {
+    //   login: { password },
+    // } = person;
+    // const { first, last } = person.name;
+    // const {
+    //   dob: { age },
+    // } = person;
+    // const {
+    //   street: { number, name },
+    // } = person.location;
+
+    const newPerson = {
+      image,
+      phone,
+      email,
+      password,
+      age,
+      street: `${number} ${name}`,
+      name: `${first} ${last}`,
+    };
+
+    setPerson(newPerson);
+    setTitle("name");
+    setValue(newPerson.name);
+    setLoading(false);
+  };
+
   const handleValue = (e) => {
     console.log(e.target);
   };
+
+  useEffect(() => {
+    getPerson();
+  }, []);
 
   return (
     <main>
@@ -71,7 +123,7 @@ function App() {
               <FaLock />
             </button>
           </div>
-          <button className="btn" type="button">
+          <button className="btn" type="button" onClick={getPerson}>
             {loading ? "Loading..." : "Random User"}
           </button>
         </div>
