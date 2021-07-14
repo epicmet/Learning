@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import data from "./data";
 import Article from "./Article";
 
+const getStrogeTheme = () => {
+  let theme = "light-theme";
+  if (localStorage.getItem("theme")) theme = localStorage.getItem("theme");
+  return theme;
+};
+
 function App() {
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState(getStrogeTheme());
 
   const changeTheme = () => {
     if (theme === "light-theme") setTheme("dark-theme");
@@ -12,6 +18,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.classList = theme;
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
