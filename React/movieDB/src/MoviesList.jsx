@@ -14,7 +14,7 @@ const MoviesList = () => {
 
   return (
     <section className="movies">
-      {movies.map((movie) => {
+      {movies.Search.map((movie) => {
         const { imdbID: id, Poster: poster, Title: title, Year: year } = movie;
 
         return (
