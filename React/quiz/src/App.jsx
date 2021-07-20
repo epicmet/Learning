@@ -20,7 +20,15 @@ function App() {
   if (loading) return <Loading />;
 
   const { question, incorrect_answers, correct_answer } = questions[index];
-  const answers = [...incorrect_answers, correct_answer];
+  let answers = [...incorrect_answers];
+  let tempIndex = Math.floor(Math.random() * (answers.length + 1));
+
+  if (tempIndex === answers.length) {
+    answers.push(correct_answer);
+  } else {
+    answers.push(answers[tempIndex]);
+    answers[tempIndex] = correct_answer;
+  }
 
   return (
     <main>
