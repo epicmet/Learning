@@ -80,11 +80,21 @@ const AppProvider = ({ children }) => {
   };
 
   const handleChange = (e) => {
-    console.log(e);
+    const name = e.target.name;
+    const value = e.target.value;
+    setQuiz({
+      ...quiz,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const { amount, category, difficulty } = quiz;
+    const url = `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category${table[category]}&type=multiple`;
+
+    fetchQuestion(url);
   };
 
   return (
