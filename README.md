@@ -11,4 +11,9 @@ And here you can find links to the courses of these projects.
   - [React Tutorial and Projects Course - by John smilga](https://www.udemy.com/course/react-tutorial-and-projects-course/)
 
 - Linux and cli
+
   - [Complete Intro to Linux and the Command Line - by Brian holt](https://frontendmasters.com/workshops/complete-linux-cli/)
+
+- Sass and Scss
+
+  - [Sass Crash Course - by Traversy Media's Youtube Channel](https://www.youtube.com/watch?v=nu5mdN2JIwM)
