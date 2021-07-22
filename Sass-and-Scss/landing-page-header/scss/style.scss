@@ -23,12 +23,11 @@ a {
 }
 
 .showcase {
-  background-color: $primary-color;
-  color: #fff;
+  @include set-background($primary-color);
   height: 600px;
 
   a {
-    color: #fff;
+    color: set-text-color($primary-color);
   }
 
   nav {
