@@ -7,25 +7,26 @@ import cartItems from "./cart-items";
 // redux stuff
 
 import { createStore } from "redux";
-import { DECREASE, INCREASE } from "./actions";
 import reducer from "./reducer";
+
+import { Provider } from "react-redux";
+
 const initialStore = {
-  count: 0,
+  cart: cartItems,
+  total: 0,
+  amount: 0,
 };
 
 const store = createStore(reducer, initialStore);
-store.dispatch({ type: DECREASE });
-store.dispatch({ type: INCREASE });
-console.log(store.getState());
 
 function App() {
   // cart setup
 
   return (
-    <main>
+    <Provider store={store}>
       <Navbar />
       <CartContainer cart={cartItems} />
-    </main>
+    </Provider>
   );
 }
 
