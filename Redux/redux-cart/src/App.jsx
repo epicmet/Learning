@@ -8,21 +8,9 @@ import cartItems from "./cart-items";
 
 import { createStore } from "redux";
 import { DECREASE, INCREASE } from "./actions";
-
+import reducer from "./reducer";
 const initialStore = {
   count: 0,
-};
-
-const reducer = (state, action) => {
-  if (action.type === DECREASE) {
-    return { ...state, count: state.count - 1 };
-  }
-
-  if (action.type === INCREASE) {
-    return { ...state, count: state.count + 1 };
-  }
-
-  return state;
 };
 
 const store = createStore(reducer, initialStore);
