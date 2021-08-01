@@ -17,3 +17,6 @@ And here you can find links to the courses of these projects.
 - Sass and Scss
 
   - [Sass Crash Course - by Traversy Media's Youtube Channel](https://www.youtube.com/watch?v=nu5mdN2JIwM)
+
+- Algorithm
+  - [JavaScript Algorithms and Data Structures Masterclass - by colt steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
