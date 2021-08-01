@@ -4,7 +4,7 @@ const countUniqueValues = function (arr) {
   let i = 0;
   let j = 1;
 
-  if (arr.length === 0) return undefined;
+  if (arr.length === 0) return 0;
 
   while (j < arr.length) {
     if (arr[i] !== arr[j]) {
