@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML Color Test</title>
+    <style type="text/css">
+      #color_preview {
+        width: 200px;
+        height: 200px;
+        border: 1px solid grey;
+        background-color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>HTML Color Test</h1>
+    <input id="color_input" type="text" />
+    <br /><br />
+    <div id="color_preview"></div>
+
+    <script>
+      const colorInput = document.querySelector("#color_input");
+      const divColor = document.querySelector("#color_preview");
+
+      colorInput.addEventListener("input", (e) => {
+        let color = e.target.value;
+        if (color.length !== 3 && color.length !== 6) {
+          color = "000";
+        }
+        for (let letter of color) {
+          if (!/[a-fA-F0-9]/.test(letter)) color = "000";
+        }
+
+        divColor.style.backgroundColor = `#${color}`;
+      });
+    </script>
+  </body>
+</html>
