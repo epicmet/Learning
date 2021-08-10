@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 26px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  background-color: #101f2f;
+}
+
+.block {
+  width: 40px;
+  height: 40px;
+}
+
+/* your code here */
+
+.row {
+  display: flex;
+}
+
+.row:first-of-type > div,
+.row:last-of-type > div {
+  background-color: #05b37b;
+}
+
+.row > div:nth-of-type(1),
+.row > div:nth-of-type(12) {
+  background-color: #05b37b;
+}
+
+.wall {
+  background-color: #05b37b;
+}
