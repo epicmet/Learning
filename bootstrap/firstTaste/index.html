@@ -15,16 +15,43 @@
   <body>
     <div class="container">
       <h1 class="display-1 text-center text-primary">Bootstrap Playground</h1>
-      <h2 class="display-4">Buttons</h2>
+      <h2 class="display-4">
+        Buttons <span class="badge bg-warning rounded-pill text-dark">new</span>
+      </h2>
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-secondary">secondary</button>
-      <button type="button" class="btn btn-outline-info">outline info</button>
+      <button type="button" class="btn btn-outline-info position-relative">
+        outline info
+        <span
+          class="
+            position-absolute
+            top-0
+            start-100
+            translate-middle
+            p-2
+            bg-danger
+            border border-light
+            rounded-circle
+          "
+        >
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </button>
       <button type="button" class="btn btn-danger" disabled>
         disabled danger
       </button>
       <button type="button" class="btn btn-warning btn-lg">
         large warning
       </button>
+      <button class="btn btn-primary">
+        Updates <span class="badge bg-light text-primary">8</span>
+      </button>
+      <h3 class="h3">Button group</h3>
+      <div class="btn-group" role="group">
+        <button class="btn bg-warning">one</button>
+        <button class="btn bg-warning">two</button>
+        <button class="btn bg-warning">three</button>
+      </div>
       <h2 class="display-4">Typography</h2>
       <p class="lead">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
