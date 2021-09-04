@@ -8,12 +8,10 @@ const deepEqual = (first , second) => {
     const firstValues = Object.values(first);
     const secondValues = Object.values(second);
     
-    for(let i = 0; i < firstKeys.length; i++) {
-      return deepEqual(firstKeys[i], secondKeys[i]);
+    for(let key of firstKeys) {
+      if(!secondKeys.includes(key) || !deepEqual(first[key], second[key])) return false;
     }
-    for(let j = 0; j < firstValues.length; j++) {
-      return deepEqual(firstValues[j], secondValues[j]);
-    }
+    return true;
   }
 }
 let obj = {here: {is: "an"}, object: 2};
