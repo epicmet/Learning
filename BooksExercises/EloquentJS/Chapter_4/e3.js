@@ -11,13 +11,10 @@ const arrayToList = (arr) => {
 
 const listToArray = (list) => {
   const resultArr = [];
-  resultArr.push(list.value);
-  
-  let { rest } = list;
-  while(rest !== null) {
-    resultArr.push(rest.value);
-    rest = rest.rest;
-  }
+  do {
+    resultArr.push(list.value);
+    list = list.rest;
+  } while(list !== null);
   return resultArr;
 }
 
