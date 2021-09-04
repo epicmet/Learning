@@ -19,4 +19,13 @@ And here you can find links to the courses of these projects.
   - [Sass Crash Course - by Traversy Media's Youtube Channel](https://www.youtube.com/watch?v=nu5mdN2JIwM)
 
 - Algorithm
+
   - [JavaScript Algorithms and Data Structures Masterclass - by colt steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
+
+- Books
+
+  - [Eloquent Javascript By Marijn Haverbeke](https://eloquentjavascript.net/)
+
+- DevOps 
+
+  -[Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
