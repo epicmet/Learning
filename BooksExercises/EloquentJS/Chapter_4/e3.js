@@ -33,6 +33,14 @@ const nth = (list, n) => {
   return val;
 }
 
+const recursiveNth = (list, n) => {
+  let {value} = list;
+  if(n === 0) return value;
+
+  list = list.rest;
+  return recursiveNth(list, n - 1);
+}
+
 console.log(arrayToList([10, 20, 30]));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30, 40])));
