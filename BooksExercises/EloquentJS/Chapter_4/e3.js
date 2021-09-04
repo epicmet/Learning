@@ -34,6 +34,8 @@ const nth = (list, n) => {
 }
 
 const recursiveNth = (list, n) => {
+  if(!list) return undefined;
+
   let {value} = list;
   if(n === 0) return value;
 
