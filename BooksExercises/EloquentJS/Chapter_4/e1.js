@@ -13,7 +13,7 @@ const range_V1 = (start, end, step = 1) => {
   return res;
 }
 
-const range = (start, end, step = 1) => {
+const range = (start, end, step = start < end ? 1 : -1) => {
   let tempNum = start;
   let res = [];
   while(tempNum !== end){
