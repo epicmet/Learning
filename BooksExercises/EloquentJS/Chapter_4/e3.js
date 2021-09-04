@@ -26,16 +26,16 @@ const prepend = (newVal, list) => {
 }
 
 const nth = (list, n) => {
-  if(n === 0) return list.value;
-  
-  let rest;
-  for(let i = 1; i <= n; i++) {
-    if(i === 1) rest = list.rest;
-    else rest = rest.rest;
+  let val;
+  for(let i = 0; i <= n; i++) {
+    if(list !== null) val = list.value;
+    else val = undefined;
+
+    list = list.rest;
   }
-  
-  return rest ? rest.value : undefined;
+  return val;
 }
+
 console.log(arrayToList([10, 20, 30]));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30, 40])));
