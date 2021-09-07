@@ -28,4 +28,4 @@ And here you can find links to the courses of these projects.
 
 - DevOps 
 
-  -[Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
+  - [Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
