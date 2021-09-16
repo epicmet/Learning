@@ -1,10 +1,12 @@
-import { compose, pipe } from "lodash/fp";
+const person = {
+  name: "John",
+  address: {
+    contry: "Iran",
+    city: "Teh",
+  },
+};
 
-let input = "   JavaScript   ";
+const newPerson = { ...person, address: { ...person.address } };
+newPerson.address.city = "New York";
 
-const trim = (str) => str.trim();
-const toLowerCase = (str) => str.toLowerCase();
-const wrap = (type) => (str) => `<${type}>${str}</${type}>`;
-
-const transform = pipe(trim, toLowerCase, wrap("span"));
-console.log(transform(input));
+console.log(person);
