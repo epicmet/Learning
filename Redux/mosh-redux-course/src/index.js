@@ -1,12 +1,11 @@
-const person = {
-  name: "John",
-  address: {
-    contry: "Iran",
-    city: "Teh",
-  },
-};
+import { Map } from "immutable";
 
-const newPerson = { ...person, address: { ...person.address } };
-newPerson.address.city = "New York";
+let book = Map({ title: "Eloquent JS" });
 
-console.log(person);
+function publish() {
+  return book.set("isPublished", true);
+}
+
+book = publish();
+
+console.log(book.toJS());
