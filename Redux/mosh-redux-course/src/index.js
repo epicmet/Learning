@@ -1,11 +1,14 @@
-import { Map } from "immutable";
+import { produce } from "immer";
 
-let book = Map({ title: "Eloquent JS" });
+const book = { title: "Eloquent JS" };
 
 function publish() {
-  return book.set("isPublished", true);
+  return produce(book, (draftBook) => {
+    draftBook.isPublished = true;
+  });
 }
 
-book = publish();
+const updated = publish();
 
-console.log(book.toJS());
+console.log(book);
+console.log(updated);
