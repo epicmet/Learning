@@ -1,14 +1,17 @@
-import { produce } from "immer";
+import store from "./store";
 
-const book = { title: "Eloquent JS" };
+store.dispatch({
+  type: "bugAdded",
+  payload: {
+    description: "Bug1",
+  },
+});
 
-function publish() {
-  return produce(book, (draftBook) => {
-    draftBook.isPublished = true;
-  });
-}
+store.dispatch({
+  type: "bugRemoved",
+  payload: {
+    id: 1,
+  },
+});
 
-const updated = publish();
-
-console.log(book);
-console.log(updated);
+console.log(store.getState());
