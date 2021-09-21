@@ -1,6 +1,13 @@
 import configureStore from "./store/configureStore";
-import { bugAdded, bugResolved, getUnresolvedBugs } from "./store/bugs";
+import {
+  bugAdded,
+  bugResolved,
+  bugAssignedToUser,
+  getUnresolvedBugs,
+  getBugsByUser,
+} from "./store/bugs";
 import { projectAdded } from "./store/projects";
+import { userAdded } from "./store/users";
 
 const store = configureStore();
 
@@ -15,5 +22,8 @@ store.dispatch(bugAdded({ description: "Bug2" }));
 store.dispatch(bugAdded({ description: "Bug3" }));
 store.dispatch(bugResolved({ id: 1 }));
 
-const unresolvedBugs = getUnresolvedBugs(store.getState());
-console.log(unresolvedBugs);
+store.dispatch(userAdded({ name: "John" }));
+store.dispatch(bugAssignedToUser({ userId: 1, bugId: 2 }));
+
+const bugs = getBugsByUser(1)(store.getState());
+console.log(bugs);
