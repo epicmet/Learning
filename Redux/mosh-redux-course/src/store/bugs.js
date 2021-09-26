@@ -32,12 +32,27 @@ const slice = createSlice({
 
     bugRecived: (bugs, action) => {
       bugs.list = action.payload;
+      bugs.loading = false;
+    },
+
+    bugRequested: (bugs, action) => {
+      bugs.loading = true;
+    },
+
+    bugRequestFailed: (bugs, actions) => {
+      bugs.loading = false;
     },
   },
 });
 
-export const { bugAdded, bugResolved, bugAssignedToUser, bugRecived } =
-  slice.actions;
+export const {
+  bugAdded,
+  bugResolved,
+  bugAssignedToUser,
+  bugRecived,
+  bugRequested,
+  bugRequestFailed,
+} = slice.actions;
 export default slice.reducer;
 
 // Action creators
@@ -45,7 +60,9 @@ const url = "/bugs";
 export const loadData = () => {
   return apiCallBegan({
     url,
+    onStart: bugRequested.type,
     onSuccess: bugRecived.type,
+    onError: bugRequestFailed.type,
   });
 };
 
