@@ -1,6 +1,8 @@
 import configureStore from "./store/configureStore";
-import { addBug } from "./store/bugs";
+import { loadData, resolveBug } from "./store/bugs";
 
 const store = configureStore();
 
-store.dispatch(addBug({ description: "a" }));
+store.dispatch(loadData());
+
+setTimeout(() => store.dispatch(resolveBug(2)), 2000);
