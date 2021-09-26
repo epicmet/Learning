@@ -11,19 +11,6 @@ import { userAdded } from "./store/users";
 
 const store = configureStore();
 
-store.dispatch(projectAdded({ name: "Project 1" }));
-
-store.subscribe(() => {
-  console.log("Store changed!");
+store.dispatch((dispatch, getState) => {
+  dispatch({ type: "bugRecived", bugs: [1, 2, 3] });
 });
-
-// store.dispatch(bugAdded({ description: "Bug1" }));
-// store.dispatch(bugAdded({ description: "Bug2" }));
-// store.dispatch(bugAdded({ description: "Bug3" }));
-// store.dispatch(bugResolved({ id: 1 }));
-
-// store.dispatch(userAdded({ name: "John" }));
-// store.dispatch(bugAssignedToUser({ userId: 1, bugId: 2 }));
-
-const bugs = getBugsByUser(1)(store.getState());
-console.log(bugs);
