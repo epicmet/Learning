@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
+import moment from "moment";
 import { apiCallBegan } from "./api";
 
 let lastId = 0;
@@ -33,6 +34,7 @@ const slice = createSlice({
     bugRecived: (bugs, action) => {
       bugs.list = action.payload;
       bugs.loading = false;
+      bugs.lastFetch = Date.now();
     },
 
     bugRequested: (bugs, action) => {
@@ -57,13 +59,21 @@ export default slice.reducer;
 
 // Action creators
 const url = "/bugs";
-export const loadData = () => {
-  return apiCallBegan({
-    url,
-    onStart: bugRequested.type,
-    onSuccess: bugRecived.type,
-    onError: bugRequestFailed.type,
-  });
+export const loadData = () => (dispatch, getState) => {
+  const { lastFetch } = getState().entities.bugs;
+
+  const diffInMinuts = moment().diff(moment(lastFetch), "minutes");
+
+  if (diffInMinuts < 10) return;
+
+  dispatch(
+    apiCallBegan({
+      url,
+      onStart: bugRequested.type,
+      onSuccess: bugRecived.type,
+      onError: bugRequestFailed.type,
+    })
+  );
 };
 
 // Selectors
