@@ -28,10 +28,10 @@ const api =
       if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
     } catch (error) {
       // General
-      dispatch(actions.apiCallFailed(error));
+      dispatch(actions.apiCallFailed(error.message));
 
       // Specific
-      if (onError) dispatch({ type: onError, payload: error });
+      if (onError) dispatch({ type: onError, payload: error.message });
     }
   };
 
