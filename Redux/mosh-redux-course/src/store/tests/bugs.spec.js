@@ -14,7 +14,7 @@ describe("bugSlice", () => {
 
   const bugsSlice = () => store.getState().entities.bugs;
 
-  it("should handle the addBug action", async () => {
+  it("should add the bug to the store if it's saved to the server ", async () => {
     const bug = { describtion: "a" };
     const savedBug = { ...bug, id: 1 };
 
@@ -24,7 +24,7 @@ describe("bugSlice", () => {
     expect(bugsSlice().list).toContainEqual(savedBug);
   });
 
-  it("should handle the addBug action", async () => {
+  it("should not add the bug to the store if it's not saved to the server", async () => {
     const bug = { describtion: "a" };
 
     fakeAxios.onPost("/bugs").reply(500);
