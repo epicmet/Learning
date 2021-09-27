@@ -42,15 +42,23 @@ describe("bugSlice", () => {
   });
 
   it("should resolve the bug in store if the server responded with success", async () => {
-    const bug = { describtion: "a" };
-    const savedBug = { ...bug, resolved: false, id: 1 };
-    fakeAxios.onPost("/bugs").reply(200, savedBug);
-    fakeAxios.onPatch("/bugs/:id");
-    store.dispatch(addBug({ describtion: "a" }));
+    fakeAxios.onPost("/bugs").reply(200, { id: 1 });
+    fakeAxios.onPatch("/bugs/1").reply(200, { id: 1, resolved: true });
 
+    await store.dispatch(addBug({}));
     await store.dispatch(resolveBug(1));
 
-    expect(bugsSlice().list[0]).toHaveProperty("resolved", true);
+    expect(bugsSlice().list[0].resolved).toBe(true);
+  });
+
+  it("should not resolve the bug in store if the server responded with failure", async () => {
+    fakeAxios.onPost("/bugs").reply(200, { id: 1 });
+    fakeAxios.onPatch("/bugs/1").reply(500);
+
+    await store.dispatch(addBug({}));
+    await store.dispatch(resolveBug(1));
+
+    expect(bugsSlice().list[0].resolved).not.toBe(true);
   });
 
   describe("selectors", () => {
