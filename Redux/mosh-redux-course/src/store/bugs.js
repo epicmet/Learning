@@ -61,7 +61,7 @@ export const loadData = () => (dispatch, getState) => {
 
   if (diffInMinuts < 10) return;
 
-  dispatch(
+  return dispatch(
     apiCallBegan({
       url,
       onStart: bugRequested.type,
