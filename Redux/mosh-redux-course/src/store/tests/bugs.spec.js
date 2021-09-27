@@ -4,15 +4,32 @@ import configureStore from "../configureStore";
 import { addBug } from "../bugs";
 
 describe("bugSlice", () => {
+  let fakeAxios;
+  let store;
+
+  beforeEach(() => {
+    fakeAxios = new MockAdapter(axios);
+    store = configureStore();
+  });
+
+  const bugsSlice = () => store.getState().entities.bugs;
+
   it("should handle the addBug action", async () => {
     const bug = { describtion: "a" };
     const savedBug = { ...bug, id: 1 };
 
-    const fakeAxios = new MockAdapter(axios);
     fakeAxios.onPost("/bugs").reply(200, savedBug);
-
-    const store = configureStore();
     await store.dispatch(addBug(bug));
-    expect(store.getState().entities.bugs.list).toContainEqual(savedBug);
+
+    expect(bugsSlice().list).toContainEqual(savedBug);
+  });
+
+  it("should handle the addBug action", async () => {
+    const bug = { describtion: "a" };
+
+    fakeAxios.onPost("/bugs").reply(500);
+    await store.dispatch(addBug(bug));
+
+    expect(bugsSlice().list).toHaveLength(0);
   });
 });
