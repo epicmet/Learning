@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import configureStore from "../configureStore";
-import { addBug, getUnresolvedBugs } from "../bugs";
+import { addBug, getUnresolvedBugs, resolveBug } from "../bugs";
 
 describe("bugSlice", () => {
   let fakeAxios;
@@ -39,6 +39,18 @@ describe("bugSlice", () => {
     await store.dispatch(addBug(bug));
 
     expect(bugsSlice().list).toHaveLength(0);
+  });
+
+  it("should resolve the bug in store if the server responded with success", async () => {
+    const bug = { describtion: "a" };
+    const savedBug = { ...bug, resolved: false, id: 1 };
+    fakeAxios.onPost("/bugs").reply(200, savedBug);
+    fakeAxios.onPatch("/bugs/:id");
+    store.dispatch(addBug({ describtion: "a" }));
+
+    await store.dispatch(resolveBug(1));
+
+    expect(bugsSlice().list[0]).toHaveProperty("resolved", true);
   });
 
   describe("selectors", () => {
