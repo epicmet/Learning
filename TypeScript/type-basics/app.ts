@@ -8,20 +8,21 @@ const number2 = 2.8;
 const printResult = true;
 const resultPhrase = "Result is: ";
 
-// objects
+enum Role {
+  ADMIN,
+  AUTHOR,
+  READ_ONLY,
+}
 
-const person: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string];
-} = {
+const person = {
   name: "Matts",
   age: 21,
   hobbies: ["Sports", "Cooking"],
-  role: [2, "author"],
+  role: Role.READ_ONLY,
 };
 
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase());
+person.role = Role.ADMIN;
+
+if (person.role === Role.ADMIN) {
+  console.log("Hey admin");
 }
