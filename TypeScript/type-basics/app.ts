@@ -9,3 +9,15 @@ const printResult = true;
 const resultPhrase = "Result is: ";
 
 add(number1, number2, printResult, resultPhrase);
+
+// objects
+
+const person: {
+  name: string;
+  age: number;
+} = {
+  name: "Matts",
+  age: 21,
+};
+
+console.log(person.name);
