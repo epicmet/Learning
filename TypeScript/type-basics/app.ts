@@ -10,10 +10,16 @@ const resultPhrase = "Result is: ";
 
 // objects
 
-const person = {
+const person: {
+  name: string;
+  age: number;
+  hobbies: string[];
+  role: [number, string];
+} = {
   name: "Matts",
   age: 21,
   hobbies: ["Sports", "Cooking"],
+  role: [2, "author"],
 };
 
 for (const hobby of person.hobbies) {
