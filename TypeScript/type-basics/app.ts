@@ -1,8 +1,7 @@
-function add(
-  input1: number | string,
-  input2: number | string,
-  type: "is-number" | "is-string"
-) {
+type Combinable = number | string;
+type ConversionType = "is-number" | "is-string";
+
+function add(input1: Combinable, input2: Combinable, type: ConversionType) {
   if (
     (typeof input1 === "number" && typeof input2 === "number") ||
     type === "is-number"
