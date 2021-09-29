@@ -8,16 +8,14 @@ const number2 = 2.8;
 const printResult = true;
 const resultPhrase = "Result is: ";
 
-add(number1, number2, printResult, resultPhrase);
-
 // objects
 
-const person: {
-  name: string;
-  age: number;
-} = {
+const person = {
   name: "Matts",
   age: 21,
+  hobbies: ["Sports", "Cooking"],
 };
 
-console.log(person.name);
+for (const hobby of person.hobbies) {
+  console.log(hobby.toUpperCase());
+}
