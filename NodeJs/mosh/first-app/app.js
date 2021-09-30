@@ -1,25 +1,16 @@
-const os = require("os");
+const http = require("http");
 
-const totalMemory = os.totalmem();
-const freeMemory = os.freemem();
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.write("Hello There");
+    res.end();
+  }
 
-console.log(`Total Memory: ${totalMemory / 1e9}`);
-console.log(`Free Memory: ${freeMemory / 1e9}`);
-
-const fs = require("fs");
-
-fs.readdir("./", (err, files) => {
-  if (err) console.log("Error", err);
-  else console.log("Result", files);
+  if (req.url === "/api/courses") {
+    res.write(JSON.stringify([1, 2, 3]));
+    res.end();
+  }
 });
 
-const EventEmitter = require("events");
-
-const Logger = require("./logger");
-const logger = new Logger();
-
-logger.on("messageLogged", (arg) => {
-  console.log("Listener called", arg);
-});
-
-logger.log("message");
+server.listen(3000);
+console.log("Listening on port 3000");
