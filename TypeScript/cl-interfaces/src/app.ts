@@ -19,8 +19,18 @@ class Department {
 }
 
 class ITDepartment extends Department {
+  headAdmin: string = "Joe";
+
   constructor(id: number, public admins: string[]) {
     super(id, "ITDeptertment");
+  }
+
+  get getAdminsList() {
+    return this.admins;
+  }
+
+  set setHeadAdmin(value: string) {
+    this.headAdmin = value;
   }
 }
 
@@ -44,6 +54,11 @@ class AccountingDepartment extends Department {
 }
 
 const IT = new ITDepartment(69, ["Joe", "Mama"]);
+
+console.log(IT.getAdminsList);
+
+IT.setHeadAdmin = "Matts the mater";
+console.log(IT.headAdmin);
 
 const accountDep = new AccountingDepartment(420, []);
 accountDep.addReport("Bad stuff");
