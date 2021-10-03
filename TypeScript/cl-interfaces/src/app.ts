@@ -1,5 +1,5 @@
 class Department {
-  name: string;
+  private name: string;
 
   constructor(input: string) {
     this.name = input;
@@ -13,5 +13,4 @@ class Department {
 const accounting = new Department("Accounting");
 accounting.describe();
 
-const accountingCopy = { name: "heuu", describe: accounting.describe };
-accountingCopy.describe();
+// accounting.name = "nuts";
