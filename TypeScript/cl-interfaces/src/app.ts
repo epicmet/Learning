@@ -1,16 +1,15 @@
 class Department {
-  private name: string;
+  // private id: string;
+  // private name: string;
 
-  constructor(input: string) {
-    this.name = input;
-  }
+  constructor(private id: number, private name: string) {}
 
   describe(this: Department) {
-    console.log(this.name);
+    console.log(this.name, this.id);
   }
 }
 
-const accounting = new Department("Accounting");
+const accounting = new Department(69, "Accounting");
 accounting.describe();
 
 // accounting.name = "nuts";
