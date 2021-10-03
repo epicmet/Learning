@@ -1,13 +1,11 @@
-class Department {
+abstract class Department {
   // private id: string;
   // private name: string;
   protected employees: string[] = [];
 
-  constructor(private readonly id: number, private name: string) {}
+  constructor(protected readonly id: number, protected name: string) {}
 
-  describe(this: Department) {
-    console.log(this.name, this.id);
-  }
+  abstract describe(this: Department): void;
 
   addEmployee(name: string) {
     this.employees.push(name);
@@ -32,6 +30,10 @@ class ITDepartment extends Department {
   set setHeadAdmin(value: string) {
     this.headAdmin = value;
   }
+
+  describe() {
+    console.log("It's IT");
+  }
 }
 
 class AccountingDepartment extends Department {
@@ -51,6 +53,10 @@ class AccountingDepartment extends Department {
     if (name === "deez") console.log("nuts");
     else this.employees.push(name);
   }
+
+  describe() {
+    console.log("Hey yo! it's accounting");
+  }
 }
 
 const IT = new ITDepartment(69, ["Joe", "Mama"]);
@@ -59,6 +65,7 @@ console.log(IT.getAdminsList);
 
 IT.setHeadAdmin = "Matts the mater";
 console.log(IT.headAdmin);
+IT.describe();
 
 const accountDep = new AccountingDepartment(420, []);
 accountDep.addReport("Bad stuff");
