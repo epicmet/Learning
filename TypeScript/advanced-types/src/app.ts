@@ -65,3 +65,15 @@ const input = document.getElementById("my-input");
 if (input) {
   (input as HTMLInputElement).value = "hey mr KRABS";
 }
+
+/////////////////////
+
+interface NotificationObj {
+  [prop: string]: string;
+}
+
+const newUpdateNotif = {
+  msg: "",
+  url: "",
+  id: "",
+};
