@@ -57,3 +57,11 @@ function letsDrive(veh: Vehicle) {
 }
 
 letsDrive(new Truck());
+
+//////////////////////
+
+const input = document.getElementById("my-input");
+
+if (input) {
+  (input as HTMLInputElement).value = "hey mr KRABS";
+}
