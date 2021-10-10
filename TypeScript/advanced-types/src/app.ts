@@ -77,3 +77,7 @@ const newUpdateNotif = {
   url: "",
   id: "",
 };
+
+const imaginaryFetchData = 0;
+const data = imaginaryFetchData ?? "DEFAULT";
+console.log(data);
