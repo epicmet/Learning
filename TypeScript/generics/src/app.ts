@@ -1,13 +1,19 @@
-function merge<T, U>(objA: T, objB: U) {
+function merge<T extends object, U extends object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 
 console.log(merge({ name: "matthew" }, { mood: "network stuff rocks!" }));
 
-const myVeryOwnPromise: Promise<string> = new Promise((res, rej) => {
-  setTimeout(() => {
-    res("heyyyyyo");
-  }, 2000);
-});
+interface Lengthy {
+  length: number;
+}
 
-myVeryOwnPromise.then((res) => res.charAt(9));
+function sayMyLength<T extends Lengthy>(el: T) {
+  if (el.length === 0) return "What Length?!";
+  else return `You have ${el.length} element${el.length > 1 ? "s" : ""}`;
+}
+
+console.log(sayMyLength("Hey yo"));
+console.log(sayMyLength(""));
+console.log(sayMyLength([1, 2, 3]));
+console.log(sayMyLength([1]));
