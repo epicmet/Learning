@@ -2,7 +2,7 @@
 
 This repo is for the projects that I work on them to learn the basics of for example React or C language.
 
-## Courses
+## Link to courses
 
 And here you can find links to the courses of these projects.
 
@@ -26,6 +26,18 @@ And here you can find links to the courses of these projects.
 
   - [Eloquent Javascript By Marijn Haverbeke](https://eloquentjavascript.net/)
 
-- DevOps 
+- DevOps
 
   - [Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
+
+- TypeScript
+
+  - [Udemy - Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/)
+
+- NodeJs
+
+  - [Udemy - Node.js The Complete Guide to Build RESTful APIs](https://www.udemy.com/course/nodejs-master-class/)
+
+- Git
+
+  - [Udemy - The Git & Github Bootcamp](https://www.udemy.com/course/git-and-github-bootcamp/)
