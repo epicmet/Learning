@@ -23,3 +23,25 @@ function accessKeyOf<T extends object, U extends keyof T>(obj: T, key: U) {
 }
 
 accessKeyOf({ name: "eyo" }, "name");
+
+class DataStorage<T extends string | number | boolean> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    this.data.splice(this.data.indexOf(item));
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem("Mahdi");
+textStorage.removeItem("Mahdi");
+textStorage.addItem("Matthew");
+console.log(textStorage.getItems());
