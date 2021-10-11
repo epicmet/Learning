@@ -17,3 +17,9 @@ console.log(sayMyLength("Hey yo"));
 console.log(sayMyLength(""));
 console.log(sayMyLength([1, 2, 3]));
 console.log(sayMyLength([1]));
+
+function accessKeyOf<T extends object, U extends keyof T>(obj: T, key: U) {
+  return obj[key];
+}
+
+accessKeyOf({ name: "eyo" }, "name");
