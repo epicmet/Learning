@@ -6,8 +6,15 @@ function AddTemplate(template: string, elID: string) {
   };
 }
 
+function Log(target: any, pName: string) {
+  console.log("in LOG");
+  console.log(target);
+  console.log(pName);
+}
+
 @AddTemplate("<h1>Welcome back</h1>", "app")
 class Person {
+  @Log
   name = "Matthew";
   constructor() {
     console.log("making new Person");
