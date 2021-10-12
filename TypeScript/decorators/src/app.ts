@@ -20,3 +20,28 @@ class Person {
     console.log("making new Person");
   }
 }
+
+function BindThis(_: any, _2: string, descriptor: PropertyDescriptor) {
+  const orgVal = descriptor.value;
+
+  const newDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+    get() {
+      return orgVal.bind(this);
+    },
+  };
+  return newDescriptor;
+}
+
+class PrintStuff {
+  text = "Welcome stranger!";
+
+  @BindThis
+  greet() {
+    console.log(this.text);
+  }
+}
+
+const p = new PrintStuff();
+document.querySelector("button")!.addEventListener("click", p.greet);
