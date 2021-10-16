@@ -1,9 +1,17 @@
+const debug = require("debug")("app:startup");
+
 const Joi = require("joi");
 
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 
 app.use(express.json());
+
+if (app.get("env") === "development") {
+  app.use(morgan("tiny"));
+  debug("Morgan activated...");
+}
 
 const courses = [
   { id: 1, name: "course1" },
