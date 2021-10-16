@@ -6,6 +6,9 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 
+app.set("view engine", "pug");
+app.set("views", "./views");
+
 app.use(express.json());
 
 if (app.get("env") === "development") {
@@ -20,7 +23,7 @@ const courses = [
 ];
 
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  res.render("index", { title: "My Express App", message: "Welcome" });
 });
 
 app.get("/api/courses", (req, res) => {
