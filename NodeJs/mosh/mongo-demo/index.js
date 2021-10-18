@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = require("mongodb").ObjectId;
 mongoose
   .connect("mongodb://localhost/mongo-exercises")
   .then(() => console.log("Connected to MongoDB"))
@@ -30,11 +31,32 @@ async function createCourse() {
 async function getCourses() {
   const courses = await Course.find({
     isPublished: true,
-    tags: { $in: ["backend", "frontend"] },
   })
-    .sort({ price: -1 })
+    .or([{ name: /.*by.*/i }, { price: { $gte: 15 } }])
     .select({ name: 1, author: 1, price: 1 });
   console.log(courses);
 }
 
-getCourses();
+async function updateCourse() {
+  const course = await Course.findById("5a68fdf95db93f6477053ddd");
+  if (!course || course.length === 0) {
+    console.log("nothing found!");
+    console.log(course);
+    return;
+  }
+
+  course.isPublished = true;
+  course.author = "Another person";
+
+  const result = await course.save();
+  console.log(result);
+}
+
+updateCourse();
+
+// (async function () {
+//   const courses = await Course.find({
+//     isPublished: false,
+//   }).select({ name: 1, author: 1, price: 1 });
+//   console.log(courses);
+// })();
