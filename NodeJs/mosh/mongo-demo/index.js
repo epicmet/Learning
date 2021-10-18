@@ -30,10 +30,10 @@ async function createCourse() {
 async function getCourses() {
   const courses = await Course.find({
     isPublished: true,
-    tags: { $in: ["backend"] },
+    tags: { $in: ["backend", "frontend"] },
   })
-    .sort({ name: 1 })
-    .select({ name: 1, author: 1 });
+    .sort({ price: -1 })
+    .select({ name: 1, author: 1, price: 1 });
   console.log(courses);
 }
 
