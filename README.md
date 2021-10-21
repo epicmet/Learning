@@ -1,6 +1,6 @@
 # Learning
 
-This repo is for the projects that I work on them to learn the basics of for example React or C language.
+This repo is an archive for the projects I worked on and blog posts I read to learn something.
 
 ## Link to courses
 
@@ -41,3 +41,9 @@ And here you can find links to the courses of these projects.
 - Git
 
   - [Udemy - The Git & Github Bootcamp](https://www.udemy.com/course/git-and-github-bootcamp/)
+
+## Link to Blog Posts
+
+### React
+
+- [React with TypeScript: Components as Function Declarations vs. Function Expressions](https://blog.echobind.com/react-with-typescript-components-as-function-declarations-vs-function-expressions-e433ac8d6938)
