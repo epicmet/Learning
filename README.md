@@ -42,6 +42,10 @@ And here you can find links to the courses of these projects.
 
   - [Udemy - The Git & Github Bootcamp](https://www.udemy.com/course/git-and-github-bootcamp/)
 
+- Webpack
+
+  - [Learn Webpack - Colt Steele](https://www.youtube.com/watch?v=3On5Z0gjf4U&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8)
+
 ## Link to Blog Posts
 
 ### React
