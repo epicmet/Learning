@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const ObjectId = require("mongodb").ObjectId;
+
 mongoose
-  .connect("mongodb://localhost/mongo-exercises")
+  .connect("mongodb://localhost/playground")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log("Could not connect to MongoDB", err));
 
@@ -11,6 +11,8 @@ const courseSchema = mongoose.Schema({
     type: String,
     required: true,
     enum: ["web", "mobile", "network"],
+    lowercase: true,
+    trim: true,
   },
   author: String,
   tags: {
@@ -35,6 +37,8 @@ const courseSchema = mongoose.Schema({
     required: function () {
       return this.isPublished;
     },
+    get: (v) => Math.round(v),
+    set: (v) => Math.round(v),
   },
 });
 
@@ -42,12 +46,12 @@ const Course = mongoose.model("Course", courseSchema);
 
 async function createCourse() {
   const course = new Course({
-    name: "Angular Course",
-    category: "-",
+    name: "Vuee Course",
+    category: "Web",
     author: "Mosh",
-    tags: null,
+    tags: ["frontend"],
     isPublished: true,
-    price: 15,
+    price: 15.8,
   });
 
   try {
@@ -63,15 +67,15 @@ async function createCourse() {
 
 async function getCourses() {
   const courses = await Course.find({
-    isPublished: true,
+    _id: "6172c591950f19b2f93d7e32",
   })
-    .or([{ name: /.*by.*/i }, { price: { $gte: 15 } }])
+    .sort({ name: 1 })
     .select({ name: 1, author: 1, price: 1 });
-  console.log(courses);
+  console.log(courses[0].price);
 }
 
 async function updateCourse() {
-  const course = await Course.findById("5a68fdf95db93f6477053ddd");
+  const course = await Course.findById("6172c404c8814ab0447585b5");
   if (!course || course.length === 0) {
     console.log("nothing found!");
     console.log(course);
@@ -85,4 +89,4 @@ async function updateCourse() {
   console.log(result);
 }
 
-createCourse();
+getCourses();
