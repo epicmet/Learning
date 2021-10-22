@@ -6,22 +6,36 @@ mongoose
   .catch((err) => console.log("Could not connect to MongoDB", err));
 
 const courseSchema = mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, minlength: 5, maxlength: 255 },
+  category: {
+    type: String,
+    required: true,
+    enum: ["web", "mobile", "network"],
+  },
   author: String,
   tags: [String],
   data: Date,
   isPublished: Boolean,
-  price: Number,
+  price: {
+    type: Number,
+    min: 10,
+    max: 200,
+    required: function () {
+      return this.isPublished;
+    },
+  },
 });
 
 const Course = mongoose.model("Course", courseSchema);
 
 async function createCourse() {
   const course = new Course({
-    // name: "Angular Course",
+    name: "Angular Course",
+    category: "-",
     author: "Mosh",
     tags: ["angular", "frontend"],
     isPublished: true,
+    price: 15,
   });
 
   try {
