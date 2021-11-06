@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./NewTodo.css";
+
 interface NewTodoProps {
   onAddTodo: (text: string) => void;
 }
