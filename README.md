@@ -2,52 +2,70 @@
 
 This repo is an archive for the projects I worked on and blog posts I read to learn something.
 
-## Link to courses
+## Link to courses :rocket:
 
 And here you can find links to the courses of these projects.
 
-- React
+### HTML/CSS
 
-  - [React Tutorial and Projects Course - by John smilga](https://www.udemy.com/course/react-tutorial-and-projects-course/)
+- [Code with Mosh - The Ultimate HTMLCSS Mastery Series](https://codewithmosh.com/p/the-ultimate-html-css)
 
-- Linux and cli
+### Sass and Scss
 
-  - [Complete Intro to Linux and the Command Line - by Brian holt](https://frontendmasters.com/workshops/complete-linux-cli/)
+- [Sass Crash Course - by Traversy Media's Youtube Channel](https://www.youtube.com/watch?v=nu5mdN2JIwM)
 
-- Sass and Scss
+### JavaScript
 
-  - [Sass Crash Course - by Traversy Media's Youtube Channel](https://www.youtube.com/watch?v=nu5mdN2JIwM)
+- [Udemy - The Modern Javascript Bootcamp Course](https://www.udemy.com/course/javascript-beginners-complete-tutorial/)
 
-- Algorithm
+- [Javascript hard parts, v2](https://frontendmasters.com/courses/javascript-hard-parts-v2/)
 
-  - [JavaScript Algorithms and Data Structures Masterclass - by colt steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
+### React
 
-- Books
+- [Frontend Masters - Complete Intro to React, v5](https://frontendmasters.com/courses/complete-react-v5/)
 
-  - [Eloquent Javascript By Marijn Haverbeke](https://eloquentjavascript.net/)
+- [React Tutorial and Projects Course - by John smilga](https://www.udemy.com/course/react-tutorial-and-projects-course/)
 
-- DevOps
+### Redux
 
-  - [Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
+- [Code with Mosh - The Ultimate Redux Course](https://codewithmosh.com/p/ultimate-redux)
 
-- TypeScript
+### TypeScript
 
-  - [Udemy - Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/)
+- [Udemy - Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/)
 
-- NodeJs
+### NodeJs
 
-  - [Udemy - Node.js The Complete Guide to Build RESTful APIs](https://www.udemy.com/course/nodejs-master-class/)
+- [Udemy - Node.js The Complete Guide to Build RESTful APIs](https://www.udemy.com/course/nodejs-master-class/)
 
-- Git
+### Linux and cli
 
-  - [Udemy - The Git & Github Bootcamp](https://www.udemy.com/course/git-and-github-bootcamp/)
+- [Complete Intro to Linux and the Command Line - by Brian holt](https://frontendmasters.com/workshops/complete-linux-cli/)
 
-- Webpack
+### Algorithm
 
-  - [Learn Webpack - Colt Steele](https://www.youtube.com/watch?v=3On5Z0gjf4U&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8)
+- [JavaScript Algorithms and Data Structures Masterclass - by colt steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
 
-## Link to Blog Posts
+### DevOps
+
+- [Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
+
+### Git
+
+- [Udemy - The Git & Github Bootcamp](https://www.udemy.com/course/git-and-github-bootcamp/)
+
+### Webpack
+
+- [Learn Webpack - Colt Steele](https://www.youtube.com/watch?v=3On5Z0gjf4U&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8)
+
+## Link to Blog Posts :memo:
 
 ### React
 
 - [React with TypeScript: Components as Function Declarations vs. Function Expressions](https://blog.echobind.com/react-with-typescript-components-as-function-declarations-vs-function-expressions-e433ac8d6938)
+
+## Books :book:
+
+### Git
+
+- Rys git tutorial - Ryan Hodson
