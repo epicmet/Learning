@@ -16,5 +16,5 @@ socket.on("addToChat", (msg) => {
   const li = document.createElement("li");
   li.textContent = msg;
   messages.appendChild(li);
-  messages.scrollTop = messages.scrollHeight;
+  window.scrollTo(0, document.body.scrollHeight);
 });
