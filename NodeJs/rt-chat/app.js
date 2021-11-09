@@ -4,10 +4,10 @@ const http = require("http");
 const app = express();
 const server = http.createServer(app);
 
-app.use("/client", express.static(__dirname, "/client"));
+app.use(express.static("client"));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname, "/client/index.html");
+  res.sendFile(__dirname + "/client/index.html");
 });
 
 console.log("Server started");
@@ -17,7 +17,8 @@ const { idGenerator } = require("./utils");
 
 const SOCKET_LIST = {};
 
-const io = require("socket.io")(server);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 io.sockets.on("connection", (socket) => {
   console.log("New user joined");
