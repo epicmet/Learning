@@ -10,6 +10,8 @@ And here you can find links to the courses of these projects.
 
 - [Code with Mosh - The Ultimate HTMLCSS Mastery Series](https://codewithmosh.com/p/the-ultimate-html-css)
 
+- [Frontend Masters – Advanced CSS Layouts](https://frontendmasters.com/courses/advanced-css-layouts/)
+
 ### Sass and Scss
 
 - [Sass Crash Course - by Traversy Media's Youtube Channel](https://www.youtube.com/watch?v=nu5mdN2JIwM)
