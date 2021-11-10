@@ -126,6 +126,41 @@ nav a {
     border-bottom: 1px solid #dddddd;
     padding: 0.3rem 0;
   }
+
+  .menu-toggle,
+  .main-menu .menu-close {
+    display: none;
+  }
+  .main-menu {
+    position: static;
+    display: block;
+  }
+  .main-menu ul {
+    padding: 0;
+    width: auto;
+    height: auto;
+    background: none;
+    overflow: hidden;
+    text-align: center;
+  }
+  .main-menu li {
+    display: inline-block;
+  }
+  .main-menu li:first-child a {
+    border-top: none;
+  }
+  .main-menu a {
+    color: #c85028;
+    border-bottom: none;
+    display: inline;
+  }
+  .main-menu a:hover,
+  .main-menu a:focus {
+    background: none;
+    color: #7e64be;
+    text-decoration: none;
+  }
+
   nav ul {
     text-align: center;
   }
