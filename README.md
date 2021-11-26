@@ -66,6 +66,10 @@ And here you can find links to the courses of these projects.
 
 - [React with TypeScript: Components as Function Declarations vs. Function Expressions](https://blog.echobind.com/react-with-typescript-components-as-function-declarations-vs-function-expressions-e433ac8d6938)
 
+### Data
+
+- [JS Buffer matters! Sometimes](https://medium.com/front-end-weekly/js-buffers-matter-sometimes-56150a35417f)
+
 ## Books :book:
 
 ### Git
