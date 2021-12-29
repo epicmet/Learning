@@ -76,6 +76,10 @@ And here you can find links to the courses of these projects.
 
 - [JS Buffer matters! Sometimes](https://medium.com/front-end-weekly/js-buffers-matter-sometimes-56150a35417f)
 
+### Variant stuff
+
+- [Getting Started with Developing Browser Extensions](https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3)
+
 ## Books :book:
 
 ### Git
