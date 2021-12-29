@@ -66,6 +66,8 @@ And here you can find links to the courses of these projects.
 
 - [DOCTYPE declaration in HTML documents](https://virgool.io/@MaryamHeydarian/doctype-declaration-in-html-documents-oslgnrvb8jey)
 
+- [Hardcore CSS calc()](https://medium.com/buildit/hardcore-css-calc-bdfb0162993c)
+
 ### React
 
 - [React with TypeScript: Components as Function Declarations vs. Function Expressions](https://blog.echobind.com/react-with-typescript-components-as-function-declarations-vs-function-expressions-e433ac8d6938)
