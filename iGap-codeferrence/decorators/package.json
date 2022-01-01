@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "dev": "tsc src/decorators.ts && node src/decorators.js"
   },
   "keywords": [],
   "author": "",
