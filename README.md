@@ -76,6 +76,10 @@ And here you can find links to the courses of these projects.
 
 - [JS Buffer matters! Sometimes](https://medium.com/front-end-weekly/js-buffers-matter-sometimes-56150a35417f)
 
+### Testing
+
+- [But really, what is a JavaScript test?](https://kentcdodds.com/blog/but-really-what-is-a-javascript-test)
+
 ### Variant stuff
 
 - [Getting Started with Developing Browser Extensions](https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3)
