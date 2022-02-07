@@ -1,11 +1,20 @@
 const express = require("express");
 const route = express.Router();
+const Joi = require("joi");
 
 const courses = [
   { id: 1, name: "course1" },
   { id: 2, name: "course2" },
   { id: 3, name: "course3" },
 ];
+
+function validateCourse(course) {
+  const schema = Joi.object({
+    name: Joi.string().min(3).required(),
+  });
+
+  return schema.validate(course);
+}
 
 route.get("/", (req, res) => {
   res.send(courses);
