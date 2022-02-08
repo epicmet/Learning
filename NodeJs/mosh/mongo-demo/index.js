@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost/playground")
+  .connect("mongodb://admin:password@localhost:27017")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log("Could not connect to MongoDB", err));
 
@@ -75,7 +75,7 @@ async function getCourses() {
 }
 
 async function updateCourse() {
-  const course = await Course.findById("6172c404c8814ab0447585b5");
+  const course = await Course.findById("62020bf4836d291281b37195");
   if (!course || course.length === 0) {
     console.log("nothing found!");
     console.log(course);
@@ -89,4 +89,4 @@ async function updateCourse() {
   console.log(result);
 }
 
-getCourses();
+// createCourse();
