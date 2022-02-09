@@ -6,9 +6,11 @@ RUN mkdir /home/node/code
 
 WORKDIR /home/node/code
 
-COPY --chown=node:node . .
+COPY package-lock.json package.json ./
 
 RUN npm ci
+
+COPY --chown=node:node . .
 
 EXPOSE 3000
 
