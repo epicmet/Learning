@@ -60,6 +60,12 @@ And here you can find links to the courses of these projects.
 
 - [Learn Webpack - Colt Steele](https://www.youtube.com/watch?v=3On5Z0gjf4U&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8)
 
+### Docker
+
+- [Complete Intro to Containers (feat. Docker)](https://frontendmasters.com/courses/complete-intro-containers/)
+- [Docker Crash Course - by The Net Ninja](https://www.youtube.com/watch?v=31ieHmcTUOk&list=PL4cUxeGkcC9hxjeEtdHFNYMtCpjNBm3h7)
+- [Docker Tutorial for Beginners [FULL COURSE in 3 Hours] - by TechWorld with Nana](https://www.youtube.com/watch?v=3c-iBn73dDE)
+
 ## Link to Blog Posts :memo:
 
 ### HTML/CSS
@@ -83,6 +89,8 @@ And here you can find links to the courses of these projects.
 ### Variant stuff
 
 - [Getting Started with Developing Browser Extensions](https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3)
+
+- [Realtime apps, from HTTP to WebSocket](https://engineering.snapp.ir/%D8%A7%D9%BE%D9%84%DB%8C%DA%A9%DB%8C%D8%B4%D9%86-%D9%87%D8%A7%DB%8C-real-time-%D8%A7%D8%B2-http-%D8%AA%D8%A7-websocket-rh73jq5sursn)
 
 ## Books :book:
 
