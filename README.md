@@ -36,6 +36,12 @@ And here you can find links to the courses of these projects.
 
 - [Udemy - Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/)
 
+### PWA
+
+#### Service Workers
+
+- [Frontend Masters - Exploring Service Workers](https://frontendmasters.com/courses/service-workers/)
+
 ### NodeJs
 
 - [Udemy - Node.js The Complete Guide to Build RESTful APIs](https://www.udemy.com/course/nodejs-master-class/)
@@ -50,21 +56,25 @@ And here you can find links to the courses of these projects.
 
 ### DevOps
 
+#### Basics
+
 - [Full Stack for Front-End Engineers, v2](https://frontendmasters.com/workshops/full-stack-v2)
+
+#### Docker
+
+- [Complete Intro to Containers (feat. Docker)](https://frontendmasters.com/courses/complete-intro-containers/)
+- [Docker Crash Course - by The Net Ninja](https://www.youtube.com/watch?v=31ieHmcTUOk&list=PL4cUxeGkcC9hxjeEtdHFNYMtCpjNBm3h7)
+- [Docker Tutorial for Beginners [FULL COURSE in 3 Hours] - by TechWorld with Nana](https://www.youtube.com/watch?v=3c-iBn73dDE)
 
 ### Git
 
 - [Udemy - The Git & Github Bootcamp](https://www.udemy.com/course/git-and-github-bootcamp/)
 
-### Webpack
+### Bundlers
+
+#### Webpack
 
 - [Learn Webpack - Colt Steele](https://www.youtube.com/watch?v=3On5Z0gjf4U&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8)
-
-### Docker
-
-- [Complete Intro to Containers (feat. Docker)](https://frontendmasters.com/courses/complete-intro-containers/)
-- [Docker Crash Course - by The Net Ninja](https://www.youtube.com/watch?v=31ieHmcTUOk&list=PL4cUxeGkcC9hxjeEtdHFNYMtCpjNBm3h7)
-- [Docker Tutorial for Beginners [FULL COURSE in 3 Hours] - by TechWorld with Nana](https://www.youtube.com/watch?v=3c-iBn73dDE)
 
 ## Link to Blog Posts :memo:
 
