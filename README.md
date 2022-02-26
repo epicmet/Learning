@@ -84,6 +84,8 @@ And here you can find links to the courses of these projects.
 
 - [Hardcore CSS calc()](https://medium.com/buildit/hardcore-css-calc-bdfb0162993c)
 
+- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
+
 ### React
 
 - [React with TypeScript: Components as Function Declarations vs. Function Expressions](https://blog.echobind.com/react-with-typescript-components-as-function-declarations-vs-function-expressions-e433ac8d6938)
