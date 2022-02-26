@@ -1,11 +1,12 @@
 "use strict";
 
-const version = 5;
+var version = 7;
 var isOnline = true;
 var isLoggedIn = false;
 var cacheName = `ramblings-${version}`;
+var allPostsCaching = false;
 
-var urlToCache = {
+var urlsToCache = {
   loggedOut: [
     "/",
     "/about",
@@ -30,34 +31,172 @@ self.addEventListener("fetch", onFetch);
 
 main().catch(console.error);
 
-// *****************
+// ***************
 
 async function main() {
-  await sendMessage({ requestStatusUpdate: true });
+  await sendMessage({ statusUpdateRequest: true });
   await cacheLoggedOutFiles();
+  return cacheAllPosts();
 }
 
-async function onInstall() {
-  console.log(`Service worker (${version}), is installing ...`);
+function onInstall(evt) {
+  console.log(`Service Worker (v${version}) installed`);
   self.skipWaiting();
 }
 
-async function onActivate(e) {
-  e.waitUntil(handleActivation());
+function onActivate(evt) {
+  evt.waitUntil(handleActivation());
 }
 
 async function handleActivation() {
   await clearCaches();
-  await cacheLoggedOutFiles(true);
+  await cacheLoggedOutFiles(/*forceReload=*/ true);
   await clients.claim();
-  console.log(`Service worker (${version}), is activating ...`);
+  console.log(`Service Worker (v${version}) activated`);
+
+  // spin off background caching of all past posts (over time)
+  cacheAllPosts(/*forceReload=*/ true).catch(console.error);
+}
+
+async function clearCaches() {
+  var cacheNames = await caches.keys();
+  var oldCacheNames = cacheNames.filter(function matchOldCache(cacheName) {
+    var [, cacheNameVersion] = cacheName.match(/^ramblings-(\d+)$/) || [];
+    cacheNameVersion =
+      cacheNameVersion != null ? Number(cacheNameVersion) : cacheNameVersion;
+    return cacheNameVersion > 0 && version !== cacheNameVersion;
+  });
+  await Promise.all(
+    oldCacheNames.map(function deleteCache(cacheName) {
+      return caches.delete(cacheName);
+    })
+  );
+}
+
+async function cacheLoggedOutFiles(forceReload = false) {
+  var cache = await caches.open(cacheName);
+
+  return Promise.all(
+    urlsToCache.loggedOut.map(async function requestFile(url) {
+      try {
+        let res;
+
+        if (!forceReload) {
+          res = await cache.match(url);
+          if (res) {
+            return;
+          }
+        }
+
+        let fetchOptions = {
+          method: "GET",
+          cache: "no-store",
+          credentials: "omit",
+        };
+        res = await fetch(url, fetchOptions);
+        if (res.ok) {
+          return cache.put(url, res);
+        }
+      } catch (err) {}
+    })
+  );
+}
+
+async function cacheAllPosts(forceReload = false) {
+  // already caching the posts?
+  if (allPostsCaching) {
+    return;
+  }
+  allPostsCaching = true;
+  await delay(5000);
+
+  var cache = await caches.open(cacheName);
+  var postIDs;
+
+  try {
+    if (isOnline) {
+      let fetchOptions = {
+        method: "GET",
+        cache: "no-store",
+        credentials: "omit",
+      };
+      let res = await fetch("/api/get-posts", fetchOptions);
+      if (res && res.ok) {
+        await cache.put("/api/get-posts", res.clone());
+        postIDs = await res.json();
+      }
+    } else {
+      let res = await cache.match("/api/get-posts");
+      if (res) {
+        let resCopy = res.clone();
+        postIDs = await res.json();
+      }
+      // caching not started, try to start again (later)
+      else {
+        allPostsCaching = false;
+        return cacheAllPosts(forceReload);
+      }
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  if (postIDs && postIDs.length > 0) {
+    return cachePost(postIDs.shift());
+  } else {
+    allPostsCaching = false;
+  }
+
+  // *************************
+
+  async function cachePost(postID) {
+    var postURL = `/post/${postID}`;
+    var needCaching = true;
+
+    if (!forceReload) {
+      let res = await cache.match(postURL);
+      if (res) {
+        needCaching = false;
+      }
+    }
+
+    if (needCaching) {
+      await delay(10000);
+      if (isOnline) {
+        try {
+          let fetchOptions = {
+            method: "GET",
+            cache: "no-store",
+            credentials: "omit",
+          };
+          let res = await fetch(postURL, fetchOptions);
+          if (res && res.ok) {
+            await cache.put(postURL, res.clone());
+            needCaching = false;
+          }
+        } catch (err) {}
+      }
+
+      // failed, try caching this post again?
+      if (needCaching) {
+        return cachePost(postID);
+      }
+    }
+
+    // any more posts to cache?
+    if (postIDs.length > 0) {
+      return cachePost(postIDs.shift());
+    } else {
+      allPostsCaching = false;
+    }
+  }
 }
 
 async function sendMessage(msg) {
-  const allClients = await clients.matchAll({ includeUncontrolled: true });
+  var allClients = await clients.matchAll({ includeUncontrolled: true });
   return Promise.all(
-    allClients.map((client) => {
-      const chan = new MessageChannel();
+    allClients.map(function sendTo(client) {
+      var chan = new MessageChannel();
       chan.port1.onmessage = onMessage;
       return client.postMessage(msg, [chan.port2]);
     })
@@ -65,59 +204,16 @@ async function sendMessage(msg) {
 }
 
 function onMessage({ data }) {
-  if (data.statusUpdate) {
+  if ("statusUpdate" in data) {
     ({ isOnline, isLoggedIn } = data.statusUpdate);
     console.log(
-      `Service worker (v${version}) status: isOnline: ${isOnline}, isLoggedIn: ${isLoggedIn}`
+      `Service Worker (v${version}) status update... isOnline:${isOnline}, isLoggedIn:${isLoggedIn}`
     );
   }
 }
 
-async function cacheLoggedOutFiles(forceReload = false) {
-  const cache = await caches.open(cacheName);
-
-  return Promise.all(
-    urlToCache.loggedOut.map(async (url) => {
-      let res;
-
-      if (!forceReload) {
-        res = cache.match(url);
-        if (res) return res;
-      }
-
-      res = await fetch(url, {
-        method: "GET",
-        credentials: "omit",
-        cache: "no-cache",
-      });
-
-      if (res.ok) {
-        await cache.put(url, res);
-      }
-    })
-  );
-}
-
-async function clearCaches() {
-  const cacheNames = await caches.keys();
-  const oldCacheNames = cacheNames.filter((cn) => {
-    if (/^ramblings-\d+$/.test(cn)) {
-      let [, cacheVersion] = cn.match(/^ramblings-(\d+)$/);
-      cacheVersion =
-        cacheVersion !== null ? Number(cacheVersion) : cacheVersion;
-      return cacheVersion > 0 && cacheVersion !== version;
-    }
-  });
-
-  return Promise.all(
-    oldCacheNames.map((cn) => {
-      return caches.delete(cn);
-    })
-  );
-}
-
-function onFetch(e) {
-  e.respondWith(router(e.request));
+function onFetch(evt) {
+  evt.respondWith(router(evt.request));
 }
 
 async function router(req) {
