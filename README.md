@@ -98,6 +98,10 @@ And here you can find links to the courses of these projects.
 
 - [But really, what is a JavaScript test?](https://kentcdodds.com/blog/but-really-what-is-a-javascript-test)
 
+### PWA
+
+- [Handling Service Worker updates – how to keep the app updated and stay sane](https://whatwebcando.today/articles/handling-service-worker-updates/)
+
 ### Variant stuff
 
 - [Getting Started with Developing Browser Extensions](https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3)
