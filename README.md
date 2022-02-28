@@ -35,6 +35,7 @@ And here you can find links to the courses of these projects.
 ### TypeScript
 
 - [Udemy - Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/)
+- [Frontend Masters - TypeScript 3 Fundamentals, v2](https://frontendmasters.com/courses/typescript-v2/)
 
 ### PWA
 
