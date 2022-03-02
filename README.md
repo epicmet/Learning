@@ -103,6 +103,10 @@ And here you can find links to the courses of these projects.
 
 - [Handling Service Worker updates – how to keep the app updated and stay sane](https://whatwebcando.today/articles/handling-service-worker-updates/)
 
+### Linux
+
+- [Learning Linux Commands: sed](https://linuxconfig.org/learning-linux-commands-sed)
+
 ### Variant stuff
 
 - [Getting Started with Developing Browser Extensions](https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3)
