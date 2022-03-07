@@ -77,6 +77,10 @@ And here you can find links to the courses of these projects.
 
 - [Learn Webpack - Colt Steele](https://www.youtube.com/watch?v=3On5Z0gjf4U&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8)
 
+### Productivity
+
+- [Developer Productivity](https://frontendmasters.com/courses/developer-productivity/)
+
 ## Link to Blog Posts :memo:
 
 ### HTML/CSS
