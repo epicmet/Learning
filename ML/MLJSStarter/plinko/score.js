@@ -5,17 +5,20 @@ function onScoreUpdate(dropPosition, bounciness, size, bucketLabel) {
 }
 
 function runAnalysis() {
-  const testSetSize = 100;
-  const [testSet, trainingSet] = splitDataset(minMax(outputs, 3), testSetSize);
+  const testSetSize = 50;
+  const k = 7;
 
-  _.range(1, 20).forEach((k) => {
+  _.range(0, 3).forEach((feature) => {
+    const data = outputs.map((row) => [row[feature], _.last(row)]);
+    const [testSet, trainingSet] = splitDataset(minMax(data, 1), testSetSize);
+
     const accuracy = _.chain(testSet)
-      .filter((t) => knn(trainingSet, _.initial(t), k) === t[3])
+      .filter((t) => knn(trainingSet, _.initial(t), k) === _.last(t))
       .size()
       .divide(testSetSize)
       .value();
 
-    console.log(`For k of ${k} accuracy is ${accuracy}`);
+    console.log(`For feature of ${feature} accuracy is ${accuracy}`);
   });
 }
 
