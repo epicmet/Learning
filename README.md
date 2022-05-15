@@ -102,6 +102,7 @@ And here you can find links to the courses of these projects.
 ### Testing
 
 - [But really, what is a JavaScript test?](https://kentcdodds.com/blog/but-really-what-is-a-javascript-test)
+- [Unit test for singleton class](https://www.technicalfeeder.com/2020/10/unit-test-for-singleton-class/)
 
 ### PWA
 
