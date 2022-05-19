@@ -103,6 +103,7 @@ And here you can find links to the courses of these projects.
 
 - [But really, what is a JavaScript test?](https://kentcdodds.com/blog/but-really-what-is-a-javascript-test)
 - [Unit test for singleton class](https://www.technicalfeeder.com/2020/10/unit-test-for-singleton-class/)
+- [A Complete Guide to Testing React Hooks](https://www.toptal.com/react/testing-react-hooks-tutorial)
 
 ### PWA
 
