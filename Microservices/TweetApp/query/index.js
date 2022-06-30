@@ -14,18 +14,24 @@ app.get("/tweets", (_, res) => {
 
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
-  console.log("event received", { type, data });
 
   if (type === "TweetCreated") {
     const { id, title } = data;
 
     tweets[id] = { id, title, comments: [] };
   } else if (type === "CommentCreated") {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
 
     const tweet = tweets[postId];
 
-    tweet.comments.push({ id, content });
+    tweet.comments.push({ id, content, status });
+  } else if (type === "CommentUpdated") {
+    const { id, postId, content, status } = data;
+
+    const comment = tweets[postId].comments.find((t) => t.id === id);
+
+    comment.status = status;
+    comment.content = content;
   }
 
   console.log(tweets);
