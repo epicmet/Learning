@@ -7,7 +7,7 @@ const TweetList = () => {
   const [tweets, setTweets] = useState({});
 
   const fetchTweets = async () => {
-    const res = await axios.get("http://localhost:4000/tweets");
+    const res = await axios.get("http://localhost:4002/tweets");
     setTweets(res.data);
   };
 
@@ -26,7 +26,7 @@ const TweetList = () => {
           >
             <div className="card-body">
               <h3>{tweet.title}</h3>
-              <CommentList postId={tweet.id} />
+              <CommentList comments={tweet.comments} />
               <CommentCreate postId={tweet.id} />
             </div>
           </div>
