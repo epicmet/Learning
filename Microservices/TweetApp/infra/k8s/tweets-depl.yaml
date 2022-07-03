@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tweets-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tweets
+  template:
+    metadata:
+      labels:
+        app: tweets
+    spec:
+      containers:
+        - name: tweets
+          image: mahdiaghaei/tweets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tweets-clusterip-srv
+spec:
+  selector:
+    app: tweets
+  type: ClusterIP
+  ports:
+    - name: tweets
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
