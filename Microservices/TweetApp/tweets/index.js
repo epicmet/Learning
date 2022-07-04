@@ -14,7 +14,7 @@ app.get("/tweets", (_, res) => {
   res.send(tweets);
 });
 
-app.post("/tweets", async (req, res) => {
+app.post("/tweets/create", async (req, res) => {
   const id = randomBytes(4).toString("hex");
 
   const { title } = req.body;

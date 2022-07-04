@@ -7,7 +7,7 @@ const TweetList = () => {
   const [tweets, setTweets] = useState({});
 
   const fetchTweets = async () => {
-    const res = await axios.get("http://localhost:4002/tweets");
+    const res = await axios.get("http://tweets-app.com/tweets");
     setTweets(res.data);
   };
 

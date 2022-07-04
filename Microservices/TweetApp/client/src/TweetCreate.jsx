@@ -7,7 +7,7 @@ const TweetCreate = () => {
   async function submitHandler(e) {
     e.preventDefault();
 
-    await axios.post("http://localhost:4000/tweets", { title: tweet });
+    await axios.post("http://tweets-app.com/tweets/create", { title: tweet });
 
     setTweet("");
   }

@@ -7,7 +7,7 @@ const CommentCreate = ({ postId }) => {
   async function submitHandler(e) {
     e.preventDefault();
 
-    await axios.post(`http://localhost:4001/tweets/${postId}/comments`, {
+    await axios.post(`http://tweets-app.com/tweets/${postId}/comments`, {
       content: comment,
     });
 
