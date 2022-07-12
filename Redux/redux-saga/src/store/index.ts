@@ -1,6 +1,8 @@
 import { applyMiddleware, Reducer } from "redux";
+import createSagaMiddleware from "@redux-saga/core";
 import { createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import rootSaga from "./saga";
 
 const initial = { value: 0 };
 
@@ -24,8 +26,15 @@ export type ReducersType = {
   [key in keyof typeof reducers]: ReturnType<typeof reducers[key]>;
 };
 
-const devToolsMiddleware = composeWithDevTools(applyMiddleware());
+// const devToolsMiddleware = composeWithDevTools(applyMiddleware());
 
-const store = createStore(combineReducers(reducers), devToolsMiddleware);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  combineReducers(reducers),
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

@@ -10,6 +10,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Useless couter :P</h1>
+
         <p>count is: {count}</p>
         <p>
           <button type="button" onClick={() => dispatch({ type: "add" })}>
