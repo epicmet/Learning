@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@assemblyscript/loader": "^0.20.16",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.20.16",
+    "nodemon": "^2.0.19"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "scripts": {
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "test": "node tests",
+    "start": "npx serve .",
+    "server": "nodemon server.js"
+  }
+}
