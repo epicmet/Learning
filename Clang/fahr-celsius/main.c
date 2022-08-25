@@ -1,21 +1,14 @@
 #include <stdio.h>
 
+#define LOWER 0   /* lower limit of table */
+#define UPPER 300 /* upper limit */
+#define STEP 20   /* step size */
+
 int main() {
-  int upper, lower, step;
-  float fahr, celsuis;
+  float fahr;
 
-  lower = 0;
-  upper = 300;
-  step = 20;
-
-  fahr = lower;
-
-  while (fahr <= upper) {
-    celsuis = (5.0 / 9.0) * (fahr - 32.0);
-
-    printf("%4.0f %6.1f\n", fahr, celsuis);
-
-    fahr = fahr + step;
+  for (fahr = LOWER; fahr <= UPPER; fahr += STEP) {
+    printf("%4.0f %6.1f\n", fahr, (5.0 / 9.0) * (fahr - 32.0));
   }
 
   return 0;
