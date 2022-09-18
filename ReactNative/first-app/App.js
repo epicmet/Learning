@@ -1,24 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, FlatList } from 'react-native';
+import ColorBox from './components/ColorBox';
 
 export default function App() {
+  const COLORS = [
+    { key: "1", colorName: 'Base03', hexCode: '#002b36' },
+    { key: "2",colorName: 'Base02', hexCode: '#073642' },
+    { key: "3",colorName: 'Base01', hexCode: '#586e75' },
+    { key: "4",colorName: 'Base00', hexCode: '#657b83' },
+    { key: "5",colorName: 'Base0', hexCode: '#839496' },
+    { key: "6",colorName: 'Base1', hexCode: '#93a1a1' },
+    { key: "7",colorName: 'Base2', hexCode: '#eee8d5' },
+    { key: "8",colorName: 'Base3', hexCode: '#fdf6e3' },
+    { key: "9",colorName: 'Yellow', hexCode: '#b58900' },
+    { key: "10",colorName: 'Orange', hexCode: '#cb4b16' },
+    { key: "11",colorName: 'Red', hexCode: '#dc322f' },
+    { key: "12", colorName: 'Magenta', hexCode: '#d33682' },
+    { key: "13",colorName: 'Violet', hexCode: '#6c71c4' },
+    { key: "14", colorName: 'Blue', hexCode: '#268bd2' },
+    { key: "15", colorName: 'Cyan', hexCode: '#2aa198' },
+    { key: "16", colorName: 'Green', hexCode: '#859900' },
+  ];
+
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={[styles.container]}>
-        <Text style={styles.heading}>Here is some fancy colors:</Text>
-        <View style={[styles.box, styles.cyan]}>
-          <Text style={styles.text}>Cyan #2aa198</Text> 
-        </View>
-        <View style={[styles.box, styles.blue]}>
-          <Text style={styles.text}>Blue #268bd2</Text> 
-        </View>
-        <View style={[styles.box, styles.magenta]}>
-          <Text style={styles.text}>Magenta #d33682</Text> 
-        </View>
-        <View style={[styles.box, styles.orange]}>
-          <Text style={styles.text}>Orange #cb4b16</Text> 
-        </View>
-      </View>
+    <SafeAreaView>
+      <FlatList 
+        style={styles.container}
+        data={COLORS}
+        renderItem={({ item }) => <ColorBox {...item} />} 
+        ListHeaderComponent={<Text style={styles.text}>Solorized</Text>}
+      />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -26,43 +37,13 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1
-  },
-  heading: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
   container: {
-    flex: 1,
     marginHorizontal: 10,
-    marginTop: 80,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
-  box: {
-    alignItems: 'center',
-    justifyContent: "center",
-    padding: 10,
-    width: '98%',
-    borderRadius: 5,
-    marginVertical: 4,
+    marginTop: 40,
   },
   text: {
-    color: "#fff"
-  },
-  cyan: {
-    backgroundColor: "#2aa198",
-  },
-  blue: {
-    backgroundColor: "#268bd2"
-  },
-  magenta: {
-    backgroundColor: "#d33682"
-  },
-  orange: {
-    backgroundColor: "#cb4b16"
+    fontSize: 18, 
+    fontWeight: "bold",
+    marginBottom: 10
   }
 });
