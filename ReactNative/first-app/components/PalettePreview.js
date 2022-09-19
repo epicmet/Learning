@@ -1,14 +1,14 @@
-import { TouchableOpacity, Text, FlatList, StyleSheet, View} from 'react-native';
+import { TouchableOpacity, Text, FlatList, StyleSheet, View } from 'react-native';
 
 const PalettePreview = ({ handlePress, item }) => {
   return (
     <TouchableOpacity onPress={handlePress}>
-      <Text style={styles.text}>{item.name}</Text>
+      <Text style={styles.text}>{item.paletteName}</Text>
       <FlatList
         style={styles.list}
         data={item.colors.slice(0, 5)}
-        keyExtractor={item => item.name}
-        renderItem={({ item }) => <View style={[styles.box, { backgroundColor: item.hexCode}]} />}
+        keyExtractor={item =>  item.colorName + 'prev'}
+        renderItem={({ item }) => <View style={[styles.box, { backgroundColor: item.hexCode }]} />}
       />
     </TouchableOpacity>
   )

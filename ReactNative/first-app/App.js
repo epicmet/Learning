@@ -6,7 +6,6 @@ import ColorPalette from './screen/ColorPalette';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   return (
     <NavigationContainer>
       <Stack.Navigator>

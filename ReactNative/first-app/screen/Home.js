@@ -1,20 +1,40 @@
+import { useState, useEffect } from 'react';
 import { FlatList, StyleSheet } from "react-native"
-import { FRONTEND_MASTERS,RAINBOW,SOLORIZED } from '../constants'
 import PalettePreview from "../components/PalettePreview";
 
 const Home = ({ navigation }) => {
-  const ColorPalettes = [
-    {name: "Solorized", colors: SOLORIZED},
-    {name: "Rainbow", colors: RAINBOW},
-    {name: "Frontend Masters", colors: FRONTEND_MASTERS},
-  ]
+  const [colorPalettes, setColorPalettes] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const getColorPalettes = async () => {
+    const response = await fetch("https://color-palette-api.kadikraman.vercel.app/palettes");
+
+    if (response.ok) {
+      const data = await response.json();
+
+      setColorPalettes(data);
+    }
+  }
+
+  useEffect(() => {
+    getColorPalettes();
+  }, []);
+
+  const handleRefresh = async () => {
+    console.log('here')
+    setIsRefreshing(true);
+    await getColorPalettes();
+    setTimeout(() => setIsRefreshing(false), 100);
+  }
 
   return (
     <FlatList
       style={styles.list}
-      data={ColorPalettes}
-      keyExtractor={item => item.name}
-      renderItem={({ item }) => (<PalettePreview item={item} handlePress={() => navigation.navigate("ColorPalette", { paletteName: item.name, colors: item.colors })}/> )} 
+      data={colorPalettes}
+      keyExtractor={item => item.id}
+      renderItem={({ item }) => (<PalettePreview item={item} handlePress={() => navigation.navigate("ColorPalette", { ...item })} />)}
+      refreshing={isRefreshing}
+      onRefresh={() => handleRefresh()}
     />
   )
 };
