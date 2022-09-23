@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 import { MoodOptionWithTimestamp } from '../types';
 import { theme } from '../theme';
 
