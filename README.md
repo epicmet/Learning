@@ -83,41 +83,29 @@ And here you can find links to the courses of these projects.
 
 ## Link to Blog Posts :memo:
 
-### HTML/CSS
-
 - [DOCTYPE declaration in HTML documents](https://virgool.io/@MaryamHeydarian/doctype-declaration-in-html-documents-oslgnrvb8jey)
 
 - [Hardcore CSS calc()](https://medium.com/buildit/hardcore-css-calc-bdfb0162993c)
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 
-### React
-
 - [React with TypeScript: Components as Function Declarations vs. Function Expressions](https://blog.echobind.com/react-with-typescript-components-as-function-declarations-vs-function-expressions-e433ac8d6938)
 
-### Data
-
 - [JS Buffer matters! Sometimes](https://medium.com/front-end-weekly/js-buffers-matter-sometimes-56150a35417f)
-
-### Testing
 
 - [But really, what is a JavaScript test?](https://kentcdodds.com/blog/but-really-what-is-a-javascript-test)
 - [Unit test for singleton class](https://www.technicalfeeder.com/2020/10/unit-test-for-singleton-class/)
 - [A Complete Guide to Testing React Hooks](https://www.toptal.com/react/testing-react-hooks-tutorial)
 
-### PWA
-
 - [Handling Service Worker updates – how to keep the app updated and stay sane](https://whatwebcando.today/articles/handling-service-worker-updates/)
 
-### Linux
-
 - [Learning Linux Commands: sed](https://linuxconfig.org/learning-linux-commands-sed)
-
-### Variant stuff
 
 - [Getting Started with Developing Browser Extensions](https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3)
 
 - [Realtime apps, from HTTP to WebSocket](https://engineering.snapp.ir/%D8%A7%D9%BE%D9%84%DB%8C%DA%A9%DB%8C%D8%B4%D9%86-%D9%87%D8%A7%DB%8C-real-time-%D8%A7%D8%B2-http-%D8%AA%D8%A7-websocket-rh73jq5sursn)
+
+- [RTL styling 101](https://rtlstyling.com/posts/rtl-styling)
 
 ## Books :book:
 
