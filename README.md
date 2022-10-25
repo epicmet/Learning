@@ -107,6 +107,10 @@ And here you can find links to the courses of these projects.
 
 - [RTL styling 101](https://rtlstyling.com/posts/rtl-styling)
 
+- [Compound Components with react hooks](https://kentcdodds.com/blog/compound-components-with-react-hooks)
+
+- [Compound components typescript](https://blog.martindidiego.com/compound-components-typescript)
+
 ## Books :book:
 
 ### Git
