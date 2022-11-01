@@ -47,6 +47,8 @@ And here you can find links to the courses of these projects.
 
 - [Udemy - Node.js The Complete Guide to Build RESTful APIs](https://www.udemy.com/course/nodejs-master-class/)
 
+- [Digging Into Node.js - Kyle simpson](https://frontendmasters.com/courses/digging-into-node/)
+
 ### Linux and cli
 
 - [Complete Intro to Linux and the Command Line - by Brian holt](https://frontendmasters.com/workshops/complete-linux-cli/)
