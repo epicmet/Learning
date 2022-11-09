@@ -117,6 +117,8 @@ And here you can find links to the courses of these projects.
 
 - [ESM packges with node.js](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 
+- [System Design for advanced beginnners](https://robertheaton.com/2020/04/06/systems-design-for-advanced-beginners/)
+
 ## Books :book:
 
 ### Git
