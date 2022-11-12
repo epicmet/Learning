@@ -53,6 +53,10 @@ And here you can find links to the courses of these projects.
 
 - [Complete Intro to Linux and the Command Line - by Brian holt](https://frontendmasters.com/workshops/complete-linux-cli/)
 
+### DataBases
+
+- [Complete intro to databases](https://frontendmasters.com/courses/databases/)
+
 ### Algorithm
 
 - [JavaScript Algorithms and Data Structures Masterclass - by colt steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
