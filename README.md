@@ -28,6 +28,12 @@ And here you can find links to the courses of these projects.
 
 - [React Tutorial and Projects Course - by John smilga](https://www.udemy.com/course/react-tutorial-and-projects-course/)
 
+### React Native
+
+- [Frontend masters React Native](https://frontendmasters.com/courses/react-native-v2/)
+
+- [Intermediate React Native](https://frontendmasters.com/courses/intermediate-react-native/)
+
 ### Redux
 
 - [Code with Mosh - The Ultimate Redux Course](https://codewithmosh.com/p/ultimate-redux)
@@ -35,7 +41,10 @@ And here you can find links to the courses of these projects.
 ### TypeScript
 
 - [Udemy - Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/)
+
 - [Frontend Masters - TypeScript 3 Fundamentals, v2](https://frontendmasters.com/courses/typescript-v2/)
+
+- [Frontend Masters](https://frontendmasters.com/courses/production-typescript/)
 
 ### PWA
 
@@ -48,6 +57,14 @@ And here you can find links to the courses of these projects.
 - [Udemy - Node.js The Complete Guide to Build RESTful APIs](https://www.udemy.com/course/nodejs-master-class/)
 
 - [Digging Into Node.js - Kyle simpson](https://frontendmasters.com/courses/digging-into-node/)
+
+- [Complete Intro to Real-Time](https://frontendmasters.com/courses/realtime/)
+
+- [The Hard Parts of Servers & Node.js](https://frontendmasters.com/courses/servers-node-js/)
+
+### WebAssembly
+
+- [Frontend Masters - Web Assembly](https://frontendmasters.com/courses/web-assembly/)
 
 ### Linux and cli
 
