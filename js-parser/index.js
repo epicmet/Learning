@@ -43,6 +43,19 @@ class Parser {
     });
   }
 
+  chain(fn) {
+    return new Parser((parserState) => {
+      const nextState = this.parserStateTransformerFn(parserState);
+      if (nextState.isError) {
+        return nextState;
+      }
+
+      const nextParser = fn(nextState.result);
+
+      return nextParser.parserStateTransformerFn(nextState);
+    });
+  }
+
   errorMap(fn) {
     return new Parser((parserState) => {
       const nextState = this.parserStateTransformerFn(parserState);
@@ -86,6 +99,72 @@ const str = (s) =>
     );
   });
 
+const LETTERS_REGEX = /^[A-Za-z]+/;
+const letters = new Parser((parserState) => {
+  const { targetString, index, isError } = parserState;
+
+  if (isError) {
+    return parserState;
+  }
+
+  const slicedTarget = targetString.slice(index);
+
+  if (slicedTarget.length === 0) {
+    return updateParserError(
+      parserState,
+      `letters: Got unexpected end of input`
+    );
+  }
+
+  const regexMatch = slicedTarget.match(LETTERS_REGEX);
+
+  if (regexMatch) {
+    return updateParserState(
+      parserState,
+      index + regexMatch[0].length,
+      regexMatch[0]
+    );
+  }
+
+  return updateParserError(
+    parserState,
+    `letters: Could not match any letter at index "${index}"`
+  );
+});
+
+const DIGITS_REGEX = /^[0-9]+/;
+const digits = new Parser((parserState) => {
+  const { targetString, index, isError } = parserState;
+
+  if (isError) {
+    return parserState;
+  }
+
+  const slicedTarget = targetString.slice(index);
+
+  if (slicedTarget.length === 0) {
+    return updateParserError(
+      parserState,
+      `digits: Got unexpected end of input`
+    );
+  }
+
+  const regexMatch = slicedTarget.match(DIGITS_REGEX);
+
+  if (regexMatch) {
+    return updateParserState(
+      parserState,
+      index + regexMatch[0].length,
+      regexMatch[0]
+    );
+  }
+
+  return updateParserError(
+    parserState,
+    `digits: Could not match any digit at index "${index}"`
+  );
+});
+
 const sequenceOf = (parsers) =>
   new Parser((parserState) => {
     if (parserState.isError) {
@@ -95,20 +174,12 @@ const sequenceOf = (parsers) =>
     const results = [];
     let nextState = parserState;
 
-    // TODO: There is an error when one of the parsers failes,
-    // the total isError is still false
-    // and result array containes atleast a dup result
     for (let p of parsers) {
       nextState = p.parserStateTransformerFn(nextState);
       results.push(nextState.result);
     }
 
-    // parsers.forEach((p) => {
-    //   nextState = p.parserStateTransformerFn(nextState);
-    //   results.push(nextState.result);
-    // });
-
-    return updateParserResult(parserState, results);
+    return updateParserResult(nextState, results);
   });
 
 const choice = (parsers) =>
@@ -184,74 +255,42 @@ const many1 = (parser) =>
     return updateParserResult(nextState, results);
   });
 
-const LETTERS_REGEX = /^[A-Za-z]+/;
-const letters = new Parser((parserState) => {
-  const { targetString, index, isError } = parserState;
-
-  if (isError) {
-    return parserState;
-  }
-
-  const slicedTarget = targetString.slice(index);
-
-  if (slicedTarget.length === 0) {
-    return updateParserError(
-      parserState,
-      `letters: Got unexpected end of input`
-    );
-  }
-
-  const regexMatch = slicedTarget.match(LETTERS_REGEX);
-
-  if (regexMatch) {
-    return updateParserState(
-      parserState,
-      index + regexMatch[0].length,
-      regexMatch[0]
-    );
-  }
-
-  return updateParserError(
-    parserState,
-    `Could not match any letter at index "${index}"`
+const between = (leftParser, rightParser) => (contentParser) =>
+  sequenceOf([leftParser, contentParser, rightParser]).map(
+    (results) => results[1]
   );
-});
-
-const DIGITS_REGEX = /^[0-9]+/;
-const digits = new Parser((parserState) => {
-  const { targetString, index, isError } = parserState;
-
-  if (isError) {
-    return parserState;
-  }
-
-  const slicedTarget = targetString.slice(index);
-
-  if (slicedTarget.length === 0) {
-    return updateParserError(
-      parserState,
-      `digits: Got unexpected end of input`
-    );
-  }
-
-  const regexMatch = slicedTarget.match(DIGITS_REGEX);
-
-  if (regexMatch) {
-    return updateParserState(
-      parserState,
-      index + regexMatch[0].length,
-      regexMatch[0]
-    );
-  }
-
-  return updateParserError(
-    parserState,
-    `Could not match any digit at index "${index}"`
-  );
-});
 
 /* -- USAGE --- */
 
-const parser = many(choice([digits, letters])).map((r) => [...r].reverse());
+const stringParser = letters.map((result) => ({
+  type: "string",
+  value: result,
+}));
 
-console.log(parser.run("1321kj"));
+const numberParser = digits.map((result) => ({
+  type: "number",
+  value: Number(result),
+}));
+
+const dicerollParser = sequenceOf([digits, str("d"), digits]).map(
+  ([n, _, s]) => ({
+    type: "diceroll",
+    value: [Number(n), Number(s)],
+  })
+);
+
+const parser = sequenceOf([letters, str(":")])
+  .map((result) => result[0])
+  .chain((type) => {
+    if (type === "string") {
+      return stringParser;
+    } else if (type === "number") {
+      return numberParser;
+    } else {
+      return dicerollParser;
+    }
+  });
+
+console.log(parser.run("string:hello"));
+console.log(parser.run("diceroll:8d3"));
+console.log(parser.run("number:43"));
