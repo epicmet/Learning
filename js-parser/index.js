@@ -255,42 +255,94 @@ const many1 = (parser) =>
     return updateParserResult(nextState, results);
   });
 
+const sepBy = (separatorParser) => (valueParser) =>
+  new Parser((parserState) => {
+    const results = [];
+    let nextState = parserState;
+
+    while (true) {
+      const thingWeWantState = valueParser.parserStateTransformerFn(nextState);
+      if (thingWeWantState.isError) {
+        break;
+      }
+      results.push(thingWeWantState.result);
+      nextState = thingWeWantState;
+
+      const separatorState =
+        separatorParser.parserStateTransformerFn(nextState);
+      if (separatorState.isError) {
+        break;
+      }
+      nextState = separatorState;
+    }
+
+    return updateParserResult(nextState, results);
+  });
+
+const sepBy1 = (separatorParser) => (valueParser) =>
+  new Parser((parserState) => {
+    const results = [];
+    let nextState = parserState;
+
+    while (true) {
+      const thingWeWantState = valueParser.parserStateTransformerFn(nextState);
+      if (thingWeWantState.isError) {
+        break;
+      }
+      results.push(thingWeWantState.result);
+      nextState = thingWeWantState;
+
+      const separatorState =
+        separatorParser.parserStateTransformerFn(nextState);
+      if (separatorState.isError) {
+        break;
+      }
+      nextState = separatorState;
+    }
+
+    if (results.length === 0) {
+      return updateParserError(
+        parserState,
+        `sepBy1: Unable to capture any results at index ${parserState.index}`
+      );
+    }
+
+    return updateParserResult(nextState, results);
+  });
+
 const between = (leftParser, rightParser) => (contentParser) =>
   sequenceOf([leftParser, contentParser, rightParser]).map(
     (results) => results[1]
   );
 
-/* -- USAGE --- */
-
-const stringParser = letters.map((result) => ({
-  type: "string",
-  value: result,
-}));
-
-const numberParser = digits.map((result) => ({
-  type: "number",
-  value: Number(result),
-}));
-
-const dicerollParser = sequenceOf([digits, str("d"), digits]).map(
-  ([n, _, s]) => ({
-    type: "diceroll",
-    value: [Number(n), Number(s)],
-  })
-);
-
-const parser = sequenceOf([letters, str(":")])
-  .map((result) => result[0])
-  .chain((type) => {
-    if (type === "string") {
-      return stringParser;
-    } else if (type === "number") {
-      return numberParser;
-    } else {
-      return dicerollParser;
-    }
+const lazy = (parserThunk) =>
+  new Parser((parserState) => {
+    const parser = parserThunk();
+    return parser.parserStateTransformerFn(parserState);
   });
 
-console.log(parser.run("string:hello"));
-console.log(parser.run("diceroll:8d3"));
-console.log(parser.run("number:43"));
+/* -- USAGE --- */
+
+// const exampleString = "[1,[2,[3],4],5]";
+
+// const betweenSquareBrackets = between(str("["), str("]"));
+// const commaSeparated = sepBy(str(","));
+
+// const value = lazy(() => choice([digits, arrayParser]));
+// const arrayParser = betweenSquareBrackets(commaSeparated(value));
+
+// console.log(arrayParser.run(exampleString));
+
+module.exports = {
+  str,
+  letters,
+  digits,
+  sequenceOf,
+  choice,
+  many,
+  many1,
+  sepBy,
+  sepBy1,
+  between,
+  lazy
+};
