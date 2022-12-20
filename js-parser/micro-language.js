@@ -1,34 +1,29 @@
 /*
-  Parser,
-  updateParserError,
-  updateParserResult,
-  updateParserState,
-} = require("./lib");
+  Add:      (+ 10 2)
+  Subtract: (- 10 2)
+  Multiply: (* 10 2)
+  Divide:   (/ 10 2)
 
-const Bit = new Parser((parserState) => {
-  if (parserState.isError) {
-    return parserState;
-  }
+  Nest calculations: (+ (* 10 2) (- (/ 50 3) 2))
+*/
 
-  const byteOffset = Math.floor(parser.index / 8);
+const { digits, str, choice, sequenceOf, between, lazy } = require("./lib");
 
-  if (byteOffset >= parserState.target.byteLength) {
-    return updateParserError(parserState, `Bit: Unexpected end of input`);
-  }
+const betweenBrackets = between(str("("), str(")"));
 
-  const byte = parserState.target.getUint8(byteOffset);
-  const bitOffset = parserState.index % 8;
+const numberParser = digits.map((result) => ({
+  type: "number",
+  value: Number(result),
+}));
+const operatorParser = choice([str("*"), str("/"), str("+"), str("-")]);
 
-  const result = (byte & (1 << bitOffset)) >> bitOffset;
+const expr = lazy(() => choice([numberParser, operationParser]));
 
-  return updateParserState(parserState, parserState.index + 1, result);
-});
-new Uint8Array([234, 235]
-/* --- USAGE --- */
-
-const parser = Bit;
-
-const data = new Uint8Array([234, 235]b: result[4] },
+const operationParser = betweenBrackets(
+  sequenceOf([operatorParser, str(" "), expr, str(" "), expr])
+).map((result) => ({
+  type: "operation",
+  value: { op: result[0], a: result[2], b: result[4] },
 }));
 
 const evaluate = (node) => {

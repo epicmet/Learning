@@ -1,14 +1,35 @@
-const fs = require("fs");
-const path = require("path");
+// Version: 4
+// Header length: 5 * 32-bit = 20 bytes
+// TOS: 0x00
+// Total Length: 0x0044 (68 bytes)
+// Identification: 0xad0b
+// Flags and Fragments: 0x0000
+// TTL: 0x40 (64 hops)
+// Protocol: 0x11 (UDP)
+// Header Checksom: 0x7272
+// Source: 0xac1402fd (172.20.2.253)
+// Destination: 0xac140006 (172.20.0.6)
+
+// A 16 bit number: (24161)
+// 0101111001100001
+
+// And some of the different ways we might interpret this number
+
+// 0101111001100001                 :: As one 16 bit number (24161)
+// 01011110 01100001                :: As two 8 bit numbers (94, 97)
+// 0101 1110 0110 0001              :: As four 4 bit numbers (5, 14, 6, 1)
+// 0 1 0 1 1 1 1 0 0 1 1 0 0 0 0 1  :: As sixteen individual bits
 
 const {
   Parser,
   updateParserError,
   updateParserState,
   sequenceOf,
-  succeed,
   fail,
+  succeed,
 } = require("./lib");
+const fs = require("fs");
+const path = require("path");
 
 const Bit = new Parser((parserState) => {
   if (parserState.isError) {
@@ -25,7 +46,6 @@ const Bit = new Parser((parserState) => {
   const bitOffset = 7 - (parserState.index % 8);
 
   const result = (byte & (1 << bitOffset)) >> bitOffset;
-
   return updateParserState(parserState, parserState.index + 1, result);
 });
 
@@ -48,7 +68,7 @@ const Zero = new Parser((parserState) => {
   if (result !== 0) {
     return updateParserError(
       parserState,
-      `Zero: Expected a 0 but got a 1 at index "${parserState.index}"`
+      `Zero: Expected a zero, but got a one at index ${parserState.index}`
     );
   }
 
@@ -74,7 +94,7 @@ const One = new Parser((parserState) => {
   if (result !== 1) {
     return updateParserError(
       parserState,
-      `One: Expected a 1 but got a 0 at index "${parserState.index}"`
+      `One: Expected a zero, but got a one at index ${parserState.index}`
     );
   }
 
@@ -83,11 +103,11 @@ const One = new Parser((parserState) => {
 
 const Uint = (n) => {
   if (n < 1) {
-    throw new Error(`Uint: n must be larger than 1, but got "${n}"`);
+    throw new Error(`Uint: n must be larger than 0, but we got ${n}`);
   }
 
   if (n > 32) {
-    throw new Error(`Uint: n must be less than 32, but got "${n}"`);
+    throw new Error(`Uint: n must be less than 32, but we got ${n}`);
   }
 
   return sequenceOf(Array.from({ length: n }, () => Bit)).map((bits) => {
@@ -97,13 +117,32 @@ const Uint = (n) => {
   });
 };
 
+// Ones complement
+// SXXX
+// 0001 = 1
+// 1001 = -1
+// 0000 = 0
+// 1000 = ? -0
+
+// Twos Complement
+// 0001
+// 1110 + 0001 = 1111 -> -1
+
+// 1011
+// 0001
+//------
+// 1100
+// 0001
+// -----
+// 1101 -> -3
+
 const Int = (n) => {
   if (n < 1) {
-    throw new Error(`Int: n must be larger than 1, but got "${n}"`);
+    throw new Error(`Int: n must be larger than 0, but we got ${n}`);
   }
 
   if (n > 32) {
-    throw new Error(`Int: n must be less than 32, but got "${n}"`);
+    throw new Error(`Int: n must be less than 32, but we got ${n}`);
   }
 
   return sequenceOf(Array.from({ length: n }, () => Bit)).map((bits) => {
@@ -124,9 +163,7 @@ const Int = (n) => {
 
 const RawString = (s) => {
   if (s.length < 1) {
-    throw new Error(
-      `RawString: s must be at least 1 charachter, but got "${n}"`
-    );
+    throw new Error(`RawString: s must be at least 1 character`);
   }
 
   const byteParsers = s
@@ -138,8 +175,9 @@ const RawString = (s) => {
           return succeed(n);
         } else {
           return fail(
-            // prettier-ignore
-            `RawString: Expected charachter "${String.fromCharCode(n)}", but got "${String.fromCharCode(res)}"`
+            `RawString: Expected character ${String.fromCharCode(
+              n
+            )}, but got ${String.fromCharCode(res)}`
           );
         }
       });
@@ -147,8 +185,6 @@ const RawString = (s) => {
 
   return sequenceOf(byteParsers);
 };
-
-/* --- USAGE --- */
 
 const tag = (type) => (value) => ({ type, value });
 
@@ -169,14 +205,14 @@ const parser = sequenceOf([
 ]);
 
 const file = fs.readFileSync(path.join(__dirname, "./packet.bin")).buffer;
-
 const dataView = new DataView(file);
 
-const result = parser.run(dataView);
+const res = parser.run(dataView);
 
-console.log(result);
+console.log(res);
 
+// const data = (new Uint8Array("Hello world!".split('').map(c => c.charCodeAt(0)))).buffer;
 
+// const res = parser.run(dataView);
 
-
-
+// console.log(res);

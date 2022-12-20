@@ -333,6 +333,14 @@ const lazy = (parserThunk) =>
     return parser.parserStateTransformerFn(parserState);
   });
 
+const fail = errMsg => new Parser(parserState => {
+  return updateParserError(parserState, errMsg);
+});
+
+const succeed = value => new Parser(parserState => {
+  return updateParserResult(parserState, value);
+})
+
 module.exports = {
   str,
   letters,
@@ -345,6 +353,8 @@ module.exports = {
   sepBy1,
   between,
   lazy,
+  fail,
+  succeed,
 
   Parser,
 
