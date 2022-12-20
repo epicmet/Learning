@@ -179,6 +179,10 @@ const sequenceOf = (parsers) =>
       results.push(nextState.result);
     }
 
+    if (nextState.isError) {
+      return nextState;
+    }
+
     return updateParserResult(nextState, results);
   });
 
@@ -257,6 +261,10 @@ const many1 = (parser) =>
 
 const sepBy = (separatorParser) => (valueParser) =>
   new Parser((parserState) => {
+    if (parserState.isError) {
+      return parserState;
+    }
+
     const results = [];
     let nextState = parserState;
 
@@ -281,6 +289,10 @@ const sepBy = (separatorParser) => (valueParser) =>
 
 const sepBy1 = (separatorParser) => (valueParser) =>
   new Parser((parserState) => {
+    if (parserState.isError) {
+      return parserState;
+    }
+
     const results = [];
     let nextState = parserState;
 
@@ -321,18 +333,6 @@ const lazy = (parserThunk) =>
     return parser.parserStateTransformerFn(parserState);
   });
 
-/* -- USAGE --- */
-
-// const exampleString = "[1,[2,[3],4],5]";
-
-// const betweenSquareBrackets = between(str("["), str("]"));
-// const commaSeparated = sepBy(str(","));
-
-// const value = lazy(() => choice([digits, arrayParser]));
-// const arrayParser = betweenSquareBrackets(commaSeparated(value));
-
-// console.log(arrayParser.run(exampleString));
-
 module.exports = {
   str,
   letters,
@@ -344,5 +344,11 @@ module.exports = {
   sepBy,
   sepBy1,
   between,
-  lazy
+  lazy,
+
+  Parser,
+
+  updateParserError,
+  updateParserState,
+  updateParserResult,
 };
