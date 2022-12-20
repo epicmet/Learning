@@ -20,9 +20,9 @@ class Parser {
     this.parserStateTransformerFn = parserStateTransformerFn;
   }
 
-  run(targetString) {
+  run(target) {
     const initialState = {
-      targetString,
+      target,
       index: 0,
       result: null,
       error: null,
@@ -71,13 +71,13 @@ class Parser {
 
 const str = (s) =>
   new Parser((parserState) => {
-    const { targetString, index, isError } = parserState;
+    const { target, index, isError } = parserState;
 
     if (isError) {
       return parserState;
     }
 
-    const slicedTarget = targetString.slice(index);
+    const slicedTarget = target.slice(index);
 
     if (slicedTarget.length === 0) {
       return updateParserError(
@@ -92,7 +92,7 @@ const str = (s) =>
 
     return updateParserError(
       parserState,
-      `str: Tried to match "${s}", but got "${targetString.slice(
+      `str: Tried to match "${s}", but got "${target.slice(
         index,
         index + 10
       )}"`
@@ -101,13 +101,13 @@ const str = (s) =>
 
 const LETTERS_REGEX = /^[A-Za-z]+/;
 const letters = new Parser((parserState) => {
-  const { targetString, index, isError } = parserState;
+  const { target, index, isError } = parserState;
 
   if (isError) {
     return parserState;
   }
 
-  const slicedTarget = targetString.slice(index);
+  const slicedTarget = target.slice(index);
 
   if (slicedTarget.length === 0) {
     return updateParserError(
@@ -134,13 +134,13 @@ const letters = new Parser((parserState) => {
 
 const DIGITS_REGEX = /^[0-9]+/;
 const digits = new Parser((parserState) => {
-  const { targetString, index, isError } = parserState;
+  const { target, index, isError } = parserState;
 
   if (isError) {
     return parserState;
   }
 
-  const slicedTarget = targetString.slice(index);
+  const slicedTarget = target.slice(index);
 
   if (slicedTarget.length === 0) {
     return updateParserError(
