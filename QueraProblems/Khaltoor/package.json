@@ -1,0 +1,7 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js < input.txt"
+  },
+  "author": "Mahdi Aghaei"
+}
