@@ -5,15 +5,16 @@ const users = {};
 
 const app = express();
 
-app.use(express.json());
+app.get("/newUser", (req, res) => {
+  let username = req.query.username || "";
+  const password = req.query.password || "";
 
-app.post("/newUser", (req, res) => {
-  const { username, password } = req.body;
+  username = username.replace(/[!@#$%^&*]/g, "");
 
   if (!username || !password) {
     return res
       .status(400)
-      .send("Please provide username and password on the body of the request");
+      .send("Please provide username and password on the query of the request");
   }
 
   if (users[username]) {
@@ -28,13 +29,16 @@ app.post("/newUser", (req, res) => {
   res.status(200).send("User made successfully");
 });
 
-app.post("/auth", (req, res) => {
-  const { username, password } = req.body;
+app.get("/auth", (req, res) => {
+  let username = req.query.username || "";
+  const password = req.query.password || "";
+
+  username = username.replace(/[!@#$%^&*]/g, "");
 
   if (!username || !password) {
     return res
       .status(400)
-      .send("Please provide username and password on the body of the request");
+      .send("Please provide username and password on the query of the request");
   }
 
   if (!users[username]) {
