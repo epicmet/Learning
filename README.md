@@ -140,6 +140,10 @@ And here you can find links to the courses of these projects.
 
 - [System Design for advanced beginnners](https://robertheaton.com/2020/04/06/systems-design-for-advanced-beginners/)
 
+- [Simple Node.js profiling](https://nodejs.org/en/docs/guides/simple-profiling/)
+
+- [Why asynchronous?](https://nodesource.com/blog/why-asynchronous)
+
 ## Books :book:
 
 ### Git
