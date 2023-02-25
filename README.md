@@ -144,6 +144,10 @@ And here you can find links to the courses of these projects.
 
 - [Why asynchronous?](https://nodesource.com/blog/why-asynchronous)
 
+- [How to use node.js streams for fileupload](https://dev.to/tqbit/how-to-use-node-js-streams-for-fileupload-4m1n)
+
+- [How to use node.js for sse (server-sent event)](https://dev.to/tqbit/how-to-use-nodejs-for-server-sent-events-sse-5ggj)
+
 ## Books :book:
 
 ### Git
