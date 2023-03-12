@@ -62,6 +62,8 @@ And here you can find links to the courses of these projects.
 
 - [The Hard Parts of Servers & Node.js](https://frontendmasters.com/courses/servers-node-js/)
 
+- [Node.js Advanced concepts](https://www.udemy.com/course/advanced-node-for-developers/)
+
 ### WebAssembly
 
 - [Frontend Masters - Web Assembly](https://frontendmasters.com/courses/web-assembly/)
