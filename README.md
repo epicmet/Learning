@@ -4,7 +4,7 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 
 - [Courses](./Courses.md)
 - [Blogs](#link-to-blog-posts-memo)
-- [Books](#books-book)
+- [Books](./Books/README.md)
 
 ## Link to Blog Posts :memo:
 
@@ -49,9 +49,3 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [How to use node.js streams for fileupload](https://dev.to/tqbit/how-to-use-node-js-streams-for-fileupload-4m1n)
 
 - [How to use node.js for sse (server-sent event)](https://dev.to/tqbit/how-to-use-nodejs-for-server-sent-events-sse-5ggj)
-
-## Books :book:
-
-### Git
-
-- Rys git tutorial - by Ryan Hodson
