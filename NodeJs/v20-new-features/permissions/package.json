@@ -1,0 +1,17 @@
+{
+  "name": "permissions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "perm:err": "node --experimental-permission --allow-fs-read=* index.js",
+    "perm:read": "node --experimental-permission --allow-fs-read=* --allow-fs-write=* index.js"
+  },
+  "engines": {
+    "node": "~20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.16.3"
+  }
+}
