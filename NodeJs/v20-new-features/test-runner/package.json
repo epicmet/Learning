@@ -1,0 +1,17 @@
+{
+  "name": "test-runner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:w": "node --test --watch"
+  },
+  "engines": {
+    "node": "~20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  }
+}

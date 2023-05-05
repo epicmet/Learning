@@ -1,0 +1,40 @@
+Arguments: 
+  /Users/maghaei/.nvm/versions/node/v20.1.0/bin/node /Users/maghaei/.yarn/bin/yarn.js add -D @types/node
+
+PATH: 
+  /Users/maghaei/.nvm/versions/node/v20.1.0/bin:/Users/maghaei/.nvm/versions/node/v18.14.2/bin:/opt/homebrew/opt/libpq/bin:/Users/maghaei/.deno/bin:/Users/maghaei/.yarn/bin:/Users/maghaei/.config/yarn/global/node_modules/.bin:/Users/maghaei/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/maghaei/.nvm/versions/node/v18.14.2/bin:/Users/maghaei/.deno/bin:/Users/maghaei/.yarn/bin:/Users/maghaei/.config/yarn/global/node_modules/.bin:/Users/maghaei/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/maghaei/.cargo/bin:/Users/maghaei/Software/bin:/Users/maghaei/Software/bin:/Users/maghaei/.cargo/bin:/opt/homebrew/opt/fzf/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.1.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error [ERR_SOCKET_CONNECTION_TIMEOUT]: Socket connection timeout
+      at new NodeError (node:internal/errors:399:5)
+      at internalConnectMultiple (node:net:1099:20)
+      at Timeout.internalConnectMultipleTimeout (node:net:1638:3)
+      at listOnTimeout (node:internal/timers:575:11)
+      at process.processTimers (node:internal/timers:514:7)
+
+npm manifest: 
+  {
+    "name": "test-runner",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "engines": {
+      "node": "~20"
+    },
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
