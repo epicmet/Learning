@@ -51,3 +51,5 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [How to use node.js for sse (server-sent event)](https://dev.to/tqbit/how-to-use-nodejs-for-server-sent-events-sse-5ggj)
 
 - [Better zsh config](https://www.soberkoder.com/better-zsh-history/)
+
+- [Node.js timeouts](https://betterstack.com/community/guides/scaling-nodejs/nodejs-timeouts/)
