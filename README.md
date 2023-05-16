@@ -53,3 +53,5 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [Better zsh config](https://www.soberkoder.com/better-zsh-history/)
 
 - [Node.js timeouts](https://betterstack.com/community/guides/scaling-nodejs/nodejs-timeouts/)
+
+- [Better debugging in Node.js](https://betterstack.com/community/guides/scaling-nodejs/nodejs-debugging/)
