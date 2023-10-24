@@ -55,3 +55,7 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [Node.js timeouts](https://betterstack.com/community/guides/scaling-nodejs/nodejs-timeouts/)
 
 - [Better debugging in Node.js](https://betterstack.com/community/guides/scaling-nodejs/nodejs-debugging/)
+
+- [You're not lacking creativity, you're overwhelmed](https://newsletter.thejorgemedina.com/p/youre-not-lacking-creativity-youre?utm_source=changelog-news)
+
+- [We have used too many levels of abstractions and now the future looks bleak](https://unixsheikh.com/articles/we-have-used-too-many-levels-of-abstractions-and-now-the-future-looks-bleak.html?utm_source=tldrnewsletter)
