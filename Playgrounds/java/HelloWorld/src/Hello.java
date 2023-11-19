@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Hello {
@@ -26,5 +27,15 @@ public class Hello {
         if(epic) {
             System.out.println("" + li + unicodeChar + unicodeChar + "i" + li);
         }
+
+        // Nice, it's like poor-man pattern matching
+        String foo = switch (li) {
+            case 'e' -> "Right?";
+            case 'i', 'a' -> "too much vowels";
+            default -> "NOT_VALID";
+        };
+
+        Date d = new Date();
+        java.sql.Date d2 = new java.sql.Date(2);
     }
 }
