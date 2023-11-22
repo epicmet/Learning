@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -7,6 +9,9 @@ public class Hello {
 
         System.out.println("And you are?");
         String name = scanner.nextLine();
+        if (name.equalsIgnoreCase("tony")) {
+            System.out.println("FUCK YOU TONY!");
+        }
 
         scanner.close();
 
@@ -37,5 +42,18 @@ public class Hello {
 
         Date d = new Date();
         java.sql.Date d2 = new java.sql.Date(2);
+
+        var qux = new int[]{1,2,4};
+
+        byte idk = (byte)power;
+        System.out.println(idk);
+
+        LocalDateTime ld = LocalDateTime.now();
+        System.out.println(ld.getMonth());
+
+        var bigD1 = new BigDecimal("0.02");
+        var bigD2 = new BigDecimal("0.01");
+        var res = bigD1.subtract(bigD2);
+        System.out.println(res);
     }
 }
