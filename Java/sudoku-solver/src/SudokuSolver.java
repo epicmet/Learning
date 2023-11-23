@@ -14,6 +14,10 @@ public class SudokuSolver {
                 {0, 0, 7, 0, 4, 0, 2, 0, 3}
         };
 
+        System.out.println("Solving...");
+        printBoard(board);
+        System.out.println();
+
         if (solveBoard(board)) {
             System.out.println("Solved!");
             printBoard(board);
@@ -62,7 +66,7 @@ public class SudokuSolver {
         int localBoxColumn = column - column % 3;
 
         for (int i = localBoxRow; i < localBoxRow + 3; ++i) {
-            for (int j = localBoxColumn; i < localBoxColumn + 3; ++j) {
+            for (int j = localBoxColumn; j < localBoxColumn + 3; ++j) {
                 if (board[i][j] == number) {
                     return true;
                 }
