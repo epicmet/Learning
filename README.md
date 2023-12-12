@@ -59,3 +59,5 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [You're not lacking creativity, you're overwhelmed](https://newsletter.thejorgemedina.com/p/youre-not-lacking-creativity-youre?utm_source=changelog-news)
 
 - [We have used too many levels of abstractions and now the future looks bleak](https://unixsheikh.com/articles/we-have-used-too-many-levels-of-abstractions-and-now-the-future-looks-bleak.html?utm_source=tldrnewsletter)
+
+- [JVM Tutorial: Java Virtual Machine Architecture Explained for Beginners](https://www.freecodecamp.org/news/jvm-tutorial-java-virtual-machine-architecture-explained-for-beginners/)
