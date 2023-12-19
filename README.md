@@ -61,3 +61,9 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [We have used too many levels of abstractions and now the future looks bleak](https://unixsheikh.com/articles/we-have-used-too-many-levels-of-abstractions-and-now-the-future-looks-bleak.html?utm_source=tldrnewsletter)
 
 - [JVM Tutorial: Java Virtual Machine Architecture Explained for Beginners](https://www.freecodecamp.org/news/jvm-tutorial-java-virtual-machine-architecture-explained-for-beginners/)
+
+###### Git conventions
+
+- [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
+
+- [Atlassian - Git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
