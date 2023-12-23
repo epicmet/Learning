@@ -2,26 +2,22 @@
 
 ## Instructions
 
-1. Build the Docker image out of the `Dockerfile`
+1. Pull and run a docker image that has PHP and apache installed. (somehting like `php:8.3-apache`)
 
 ```
-docker build -t local-php .
+docker run --rm -d -p <APP_PORT>:80 -v "$PWD/src":/var/www/html --name <YOUR_CONTAINER_NAME> local-php
 ```
 
-2. Run the image
+> The `APP_PORT` is where your PHP files are served.
 
-```
-docker run --rm -d -p <LOCAL_PORT>:80 -v "$PWD/src":/var/www/html --name <YOUR_CONTAINER_NAME> local-php
-```
+2. Install `live-server` extension on your browser.
 
-3. Run `npx live-server src --port <LIVE_SERVER_PORT>`
+3. Run `npx live-server src --port=<LIVE_SERVER_PORT>`.
 
-4. Install `live-server` extension on your browser
+> The `LIVE_SERVER_PORT` is the port `live-server` and the browser extension talk to each other. You don't interact with it directly.
 
-5. Open extension and set `Actual Server` to http://localhost:<LOCAL_PORT>
+4. Open extension and set `Actual Server Address` to http://localhost:<APP_PORT> and set the `Live Server Address` to http://localhost:<LIVE_SERVER_PORT>
 
-6. Open extension and set `Local Server` to http://localhost:<LIVE_SERVER_PORT>
+5. Visit http://localhost:<APP_PORT> in your browser
 
-7. Visit http://localhost:<LOCAL_PORT> in your browser
-
-8. Enjoy suffering!
+6. Enjoy suffering!
