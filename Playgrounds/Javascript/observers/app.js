@@ -60,12 +60,27 @@ updateAttrBtn.addEventListener("click", () => {
 
 /////////////////////////////////////////////////////////////////////////////
 
+const CLASS_NAME = "MY_FUCKING_COOL_CLASS_NAME";
+
+function modify(node) {
+  node.classList.add(CLASS_NAME);
+
+  node.style.backgroundColor = "red";
+  setTimeout(() => {
+    node.style.backgroundColor = "#333";
+  }, 1000);
+}
+
 const observer = new MutationObserver((mutations) => {
   const id = parseInt((Date.now() * Math.random()).toString().slice(0, 2));
   console.log(`>>-------- ${id} -------->>`);
 
   mutations.forEach((mutation) => {
-    console.log(mutation);
+    mutation.addedNodes.forEach((n) => {
+      if (n instanceof HTMLElement) {
+        modify(n);
+      }
+    });
   });
 
   console.log(`<<-------- ${id} --------<<`);
@@ -74,4 +89,5 @@ const observer = new MutationObserver((mutations) => {
 observer.observe(container, {
   childList: true,
   subtree: true,
+  attributes: true,
 });
