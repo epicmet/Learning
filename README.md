@@ -67,3 +67,9 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
 
 - [Atlassian - Git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+
+###### Kafka Strategies
+
+- [Apache kafka rebalance protocol or the magic behind your stream application](https://medium.com/streamthoughts/apache-kafka-rebalance-protocol-or-the-magic-behind-your-streams-applications-e94baf68e4f2)
+
+- [Understanding kafka partition assignment strategies and how to write your own custom assignor](https://medium.com/streamthoughts/understanding-kafka-partition-assignment-strategies-and-how-to-write-your-own-custom-assignor-ebeda1fc06f3)
