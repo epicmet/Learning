@@ -62,6 +62,8 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 
 - [JVM Tutorial: Java Virtual Machine Architecture Explained for Beginners](https://www.freecodecamp.org/news/jvm-tutorial-java-virtual-machine-architecture-explained-for-beginners/)
 
+- [Use Makefile as the task runner for arbitrary projects](https://vinta.ws/code/use-makefile-as-the-task-runner-for-arbitrary-projects.html)
+
 ###### Git conventions
 
 - [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
@@ -73,3 +75,7 @@ This repo is an archive for the projects I worked on and blog posts I read to le
 - [Apache kafka rebalance protocol or the magic behind your stream application](https://medium.com/streamthoughts/apache-kafka-rebalance-protocol-or-the-magic-behind-your-streams-applications-e94baf68e4f2)
 
 - [Understanding kafka partition assignment strategies and how to write your own custom assignor](https://medium.com/streamthoughts/understanding-kafka-partition-assignment-strategies-and-how-to-write-your-own-custom-assignor-ebeda1fc06f3)
+
+###### Vim & Neovim
+
+- [Vim and the quickfix list](https://vonheikemen.github.io/devlog/tools/vim-and-the-quickfix-list/)
